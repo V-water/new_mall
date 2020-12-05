@@ -1,0 +1,46 @@
+/*所有元素使用边框盒子模型来增加布局的稳定性*/
+
+* {
+    box-sizing: border-box;
+}
+
+/* 同时清楚多种元素的内外边距 */
+
+body, p, ol, ul, li, th, td, dl, dd, h1, h2, h3, h4, h5, h6, form, fieldset, legend, input, textarea, select, pre {
+    margin: 0;
+    padding: 0;
+}
+
+/* 用于清楚浮动元素引起的高度塌陷问题 */
+
+.clear:after {
+    content: "";
+    display: block;
+    clear: both;
+}
+
+/* flex居中布局 */
+
+.flex_center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* a标签的css样式处理 */
+
+a {
+    margin-left: 5px;
+    text-decoration: none;
+    color: #01c4ff;
+}
+
+/* 去掉li前面的点 */
+
+li {
+    list-style: none;
+}
+
+/* body{
+    margin: 10px;
+} */
