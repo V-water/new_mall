@@ -1,5 +1,5 @@
 <template>
-  <div class>
+  <div class="allbackground">
     <!-- <div>showBottomMenu的值：{{showBottomMenu}}</div> -->
     <!-- {{listgoods}} -->
     <!-- <div class>{{listData}}</div> -->
@@ -173,8 +173,13 @@ export default {
 </script>
 
 <style>
+.allbackground{
+  height: 100vw;
+  background-color: rgb(248, 248, 248);
+}
 .allGoods_menu {
-  border: 1px black solid;
+  /* border: 1px black solid; */
+  z-index: 1;
   margin-left: auto;
   margin-right: auto;
   background-color: #fff;

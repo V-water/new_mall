@@ -42,19 +42,19 @@ export default {
   display: flex;
   width: 486px;
   height: 120px;
-  border: 1px red solid;
+  /* border: 1px red solid; */
 }
 
 .goods_card_aside,
 .goods_card_aside_img {
-  border: 1px black solid;
+  /* border: 1px black solid; */
   width: 145px;
   height: 100%;
 }
 
 .goods_card_artical {
   width: 292px;
-  border: 1px black solid;
+  /* border: 1px black solid; */
 }
 
 .goods_card_article_title {
@@ -72,7 +72,7 @@ export default {
 }
 
 .goods_card_article_priceSell {
-  border: 1px black solid;
+  /* border: 1px black solid; */
   width: 150px;
   color: red;
   padding: 0 0 0 10px;
@@ -81,7 +81,7 @@ export default {
 }
 
 .goods_card_article_priceSell_price {
-  border: 1px black solid;
+  /* border: 1px black solid; */
   display: inline-block;
   width: 110px;
   height: 100%;
@@ -90,7 +90,7 @@ export default {
 .icon-tianjia {
   font-size: 24px;
   height: 100%;
-  border: 1px black solid;
+  /* border: 1px black solid; */
   display: inline-block;
   cursor: pointer;
 }
