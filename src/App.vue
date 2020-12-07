@@ -1,6 +1,8 @@
 <template>
   <div id="app">
     <!-- <HelloWorld msg="Welcome to Your Vue.js App"/> -->
+    <!-- 路由视图 -->
+    <router-view class="router_view"></router-view>
 
     <!-- 底部菜单 -->
     <div class="menu_bottom">
@@ -12,11 +14,11 @@
         <router-link to="/">首页</router-link>
       </div>
       <div class="menu_1">
-        <div
+         <router-link to="/listArea"><div
           class="iconfont icon-shangpin"
           style="font-size: 20px; color: gray"
         ></div>
-        <div style="color: gray">所有商品</div>
+        <div style="color: gray">所有商品</div></router-link>
       </div>
       <div class="menu_1">
         <div
@@ -34,8 +36,6 @@
       </div>
     </div>
 
-    <!-- 路由视图 -->
-    <router-view class="router_view"></router-view>
   </div>
 </template>
 

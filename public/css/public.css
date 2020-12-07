@@ -30,7 +30,6 @@ body, p, ol, ul, li, th, td, dl, dd, h1, h2, h3, h4, h5, h6, form, fieldset, leg
 /* a标签的css样式处理 */
 
 a {
-    margin-left: 5px;
     text-decoration: none;
     color: #01c4ff;
 }
