@@ -46,6 +46,78 @@
             <div class="box_2" style="width: 135px">￥69</div>
             <div class="iconfont icon-gouwuche box_car"></div>
           </div>
+          <div class="box_1">
+            <div class="goods_img">
+              <a href="#">
+                <img
+                  class="box_commodity"
+                  src="https://img.yzcdn.cn/upload_files/2016/09/29/ForFFyDV_trRjCVprENBUvCuKYef.jpg!middle.jpg"
+                />
+                <div class="img_logo">
+                  <img src="img/logo.png" width="32px" height="32px" />
+                </div>
+              </a>
+            </div>
+            <div class="goods_title">
+              佳沛金奇异果，6个装，水润香甜，唤醒全身活力！
+            </div>
+            <div class="box_2" style="width: 135px">￥79.8</div>
+            <div class="iconfont icon-gouwuche box_car"></div>
+          </div>
+          <div class="box_1">
+            <div class="goods_img">
+              <a href="#">
+                <img
+                  class="box_commodity"
+                  src="https://img.yzcdn.cn/upload_files/2018/12/11/FuQ3CP8mS1mIPfZ4dAJa1AbMOzWB.jpg!middle.jpg"
+                />
+                <div class="img_logo">
+                  <img src="img/logo.png" width="32px" height="32px" />
+                </div>
+              </a>
+            </div>
+            <div class="goods_title">
+              砂糖桔2斤装，甘甜可口，汁多化渣
+            </div>
+            <div class="box_2" style="width: 135px">￥19.9</div>
+            <div class="iconfont icon-gouwuche box_car"></div>
+          </div>
+          <div class="box_1">
+            <div class="goods_img">
+              <a href="#">
+                <img
+                  class="box_commodity"
+                  src="https://img1.360buyimg.com/n6/jfs/t1/15492/22/10575/256417/5c8875d3Ecc98b5ce/d102b1ac792d19a8.jpg"
+                />
+                <div class="img_logo">
+                  <img src="img/logo.png" width="32px" height="32px" />
+                </div>
+              </a>
+            </div>
+            <div class="goods_title">
+              新鲜水果
+            </div>
+            <div class="box_2" style="width: 135px">￥68.8</div>
+            <div class="iconfont icon-gouwuche box_car"></div>
+          </div>
+          <div class="box_1">
+            <div class="goods_img">
+              <a href="#">
+                <img
+                  class="box_commodity"
+                  src="https://img1.360buyimg.com/n6/jfs/t26575/223/1308050262/395693/66e2d658/5bc69bcfN8030a03e.jpg"
+                />
+                <div class="img_logo">
+                  <img src="img/logo.png" width="32px" height="32px" />
+                </div>
+              </a>
+            </div>
+            <div class="goods_title">
+              新鲜水果
+            </div>
+            <div class="box_2" style="width: 135px">￥69</div>
+            <div class="iconfont icon-gouwuche box_car"></div>
+          </div>
 
           <a href="#" class="lookAll">点击查看全部商品</a>
         </div>
