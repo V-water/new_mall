@@ -7,35 +7,33 @@
     <!-- 底部菜单 -->
     <div class="menu_bottom">
       <div class="menu_1">
-        <div
-          class="iconfont icon-shouye"
-          style="font-size: 20px; color: rgb(228, 49, 48)"
-        ></div>
-        <router-link to="/">首页</router-link>
+        <router-link to="/">
+          <div class="iconfont icon-shouye" style="font-size: 20px"></div>
+          <div>首页</div>
+        </router-link>
       </div>
       <div class="menu_1">
-         <router-link to="/listGoods"><div
-          class="iconfont icon-shangpin"
-          style="font-size: 20px; color: gray"
-        ></div>
-        <div style="color: gray">所有商品</div></router-link>
+        <router-link to="/listGoods">
+          <div class="iconfont icon-shangpin" style="font-size: 20px"></div>
+          <div>所有商品</div>
+        </router-link>
       </div>
       <div class="menu_1">
-        <div
-          class="iconfont icon-gouwuche"
-          style="font-size: 20px; color: gray"
-        ></div>
-        <div style="color: gray">购物车</div>
+        <router-link to="">
+          <div class="iconfont icon-gouwuche" style="font-size: 20px"></div>
+          <div>购物车</div>
+        </router-link>
       </div>
       <div class="menu_1">
-        <div
-          class="iconfont icon-80gerenzhongxin"
-          style="font-size: 20px; color: gray"
-        ></div>
-        <div style="color: gray">个人中心</div>
+        <router-link to="">
+          <div
+            class="iconfont icon-80gerenzhongxin"
+            style="font-size: 20px"
+          ></div>
+          <div>个人中心</div>
+        </router-link>
       </div>
     </div>
-
   </div>
 </template>
 
@@ -67,10 +65,11 @@ export default {
   flex: 1;
   text-align: center;
   font-size: 12px;
+  /* color: gray; */
 }
 
-.head .router-link-exact-active {
+.menu_1 .router-link-exact-active {
   color: #e61717;
-  font-weight: bold;
+  /* font-weight: bold; */
 }
 </style>

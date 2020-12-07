@@ -4,138 +4,72 @@
       <div class="box_head">码帮商城</div>
       <van-swipe class="my-swipe" :autoplay="3000" indicator-color="white">
         <van-swipe-item class="box_img">
-          <img src="img/banner_1.jpg" />
+          <img
+            src="https://img.yzcdn.cn/upload_files/2018/12/11/Ft8u0o9RPHyxDwahv19iH8ixFWXM.jpg!large.jpg"
+          />
         </van-swipe-item>
         <van-swipe-item class="box_img">
-          <img src="img/banner_2.jpg" />
+          <img
+            src="https://img.yzcdn.cn/upload_files/2018/12/11/FsfFgmOHGm6WZsnloJo22RImEJ6p.jpg!large.jpg"
+          />
+        </van-swipe-item>
+        <van-swipe-item class="box_img">
+          <img
+            src="https://img.yzcdn.cn/upload_files/2018/12/11/FvAWQmPIRX4Qr6baCOfvf1rTOHBj.jpg!large.jpg"
+          />
         </van-swipe-item>
       </van-swipe>
       <div class="block">
         <div style="background: rgb(242, 242, 242)">
-          <div class="box_1">
-            <div class="goods_img">
-              <a href="#">
-                <img
-                  class="box_commodity"
-                  src="https://img.yzcdn.cn/upload_files/2015/05/13/Fi9mk4S1ve59315BRMx0wXpPgCsA.jpg!middle.jpg"
-                />
-                <div class="img_logo">
-                  <img src="img/logo.png" width="32px" height="32px" />
-                </div>
-              </a>
-            </div>
-            <div class="goods_title">新疆库尔勒香梨，3个仅售9.9元！</div>
-            <div class="box_2" style="width: 135px">￥9.9</div>
-            <div class="iconfont icon-gouwuche box_car"></div>
-          </div>
-          <div class="box_1">
-            <div class="goods_img">
-              <a href="#">
-                <img
-                  class="box_commodity"
-                  src="https://img.yzcdn.cn/upload_files/2016/03/16/FvXCq8Ye4m5XIoCyOI4w7SvwLqqe.jpg!middle.jpg"
-                />
-                <div class="img_logo">
-                  <img src="img/logo.png" width="32px" height="32px" />
-                </div>
-              </a>
-            </div>
-            <div class="goods_title">
-              【商务大切盘，6-8人份！】6种时令水果，企业下午茶、会议茶歇、亲朋聚会，分享快乐，分享精彩！
-            </div>
-            <div class="box_2" style="width: 135px">￥69</div>
-            <div class="iconfont icon-gouwuche box_car"></div>
-          </div>
-          <div class="box_1">
-            <div class="goods_img">
-              <a href="#">
-                <img
-                  class="box_commodity"
-                  src="https://img.yzcdn.cn/upload_files/2016/09/29/ForFFyDV_trRjCVprENBUvCuKYef.jpg!middle.jpg"
-                />
-                <div class="img_logo">
-                  <img src="img/logo.png" width="32px" height="32px" />
-                </div>
-              </a>
-            </div>
-            <div class="goods_title">
-              佳沛金奇异果，6个装，水润香甜，唤醒全身活力！
-            </div>
-            <div class="box_2" style="width: 135px">￥79.8</div>
-            <div class="iconfont icon-gouwuche box_car"></div>
-          </div>
-          <div class="box_1">
-            <div class="goods_img">
-              <a href="#">
-                <img
-                  class="box_commodity"
-                  src="https://img.yzcdn.cn/upload_files/2018/12/11/FuQ3CP8mS1mIPfZ4dAJa1AbMOzWB.jpg!middle.jpg"
-                />
-                <div class="img_logo">
-                  <img src="img/logo.png" width="32px" height="32px" />
-                </div>
-              </a>
-            </div>
-            <div class="goods_title">
-              砂糖桔2斤装，甘甜可口，汁多化渣
-            </div>
-            <div class="box_2" style="width: 135px">￥19.9</div>
-            <div class="iconfont icon-gouwuche box_car"></div>
-          </div>
-          <div class="box_1">
-            <div class="goods_img">
-              <a href="#">
-                <img
-                  class="box_commodity"
-                  src="https://img1.360buyimg.com/n6/jfs/t1/15492/22/10575/256417/5c8875d3Ecc98b5ce/d102b1ac792d19a8.jpg"
-                />
-                <div class="img_logo">
-                  <img src="img/logo.png" width="32px" height="32px" />
-                </div>
-              </a>
-            </div>
-            <div class="goods_title">
-              新鲜水果
-            </div>
-            <div class="box_2" style="width: 135px">￥68.8</div>
-            <div class="iconfont icon-gouwuche box_car"></div>
-          </div>
-          <div class="box_1">
-            <div class="goods_img">
-              <a href="#">
-                <img
-                  class="box_commodity"
-                  src="https://img1.360buyimg.com/n6/jfs/t26575/223/1308050262/395693/66e2d658/5bc69bcfN8030a03e.jpg"
-                />
-                <div class="img_logo">
-                  <img src="img/logo.png" width="32px" height="32px" />
-                </div>
-              </a>
-            </div>
-            <div class="goods_title">
-              新鲜水果
-            </div>
-            <div class="box_2" style="width: 135px">￥69</div>
-            <div class="iconfont icon-gouwuche box_car"></div>
-          </div>
-
+          <mall_goods_card
+            v-for="item in listData"
+            :item="item"
+            :key="item.id"
+          ></mall_goods_card>
           <a href="#" class="lookAll">点击查看全部商品</a>
         </div>
       </div>
+      <div class="plase"></div>
     </div>
-
-    <div class="plase"></div>
   </div>
 </template>
 
 <script>
 let vueMethods = {};
+//函数：{ajax获取数据列表函数}
+vueMethods.getList = async function () {
+  let { data } = await axios({
+    method: "post",
+    url: "https://www.dmagic.cn/info/getCommonList",
+    data: {
+      findJson: this.findJson, //拼接查询参数
+      pageIndex: 1,
+      pageSize: 10,
+      _systemId: "sys_zhangjiawei",
+      _dataType: this.dataType,
+    },
+  });
+  let { list } = data;
+  this.listData = list; //用来输出列表的数组
+};
 
+import axios from "axios";
+import mall_goods_card from "../components/mall_goods_card.vue";
 export default {
+  components: {
+    //子组件的注册
+    mall_goods_card,
+  },
   data: function () {
-    return {};
+    return {
+      listData: [], //数据列表
+      dataType: "goods",
+    };
   },
   methods: vueMethods, //***将vueMethods对象展开到此处
+  created: function () {
+    this.getList(); //调用：{ajax获取数据列表函数}
+  },
 };
 </script>
 
@@ -181,51 +115,7 @@ export default {
   margin: 0 auto;
   background: #f8f8f8;
 }
-.box_1 {
-  height: 265px;
-  width: 175px;
-  background: #fff;
-  margin: 5px 7px;
-  float: left;
-}
-.goods_img {
-  width: 167.5px;
-  height: 175.5px;
-  position: relative;
-}
-.box_commodity {
-  width: 167.5px;
-  height: 167.5px;
-  background-size: 167.5px 167.5px;
-  background-repeat: no-repeat;
-  margin: 0 4px;
-  position: absolute;
-  top: 0;
-  left: 0;
-}
-.img_logo {
-  width: 32px;
-  height: 32px;
-  position: absolute;
-  top: 0;
-  left: 10px;
-}
-.goods_title {
-  height: 40px;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-.box_2,
-.box_car {
-  color: #ff5e5c;
-  float: left;
-  margin: 20px 0;
-}
-.box_car {
-  font-size: 25px;
-  width: 40px;
-  height: 40px;
-}
+
 .plase {
   height: 45px;
 }

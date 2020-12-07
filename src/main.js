@@ -13,7 +13,7 @@ import listGoods from "./page/listGoods.vue";
 const router = new VueRouter({
   routes: [
     { path: '/', component: mall_main },
-    {path: '/listGoods', component: listGoods,},
+    { path: '/listGoods', component: listGoods, },
   ]
 })
 
