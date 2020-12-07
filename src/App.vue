@@ -14,7 +14,7 @@
         <router-link to="/">首页</router-link>
       </div>
       <div class="menu_1">
-         <router-link to="/listArea"><div
+         <router-link to="/listGoods"><div
           class="iconfont icon-shangpin"
           style="font-size: 20px; color: gray"
         ></div>

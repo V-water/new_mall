@@ -1,6 +1,7 @@
 <template>
   <div class>
-    <!-- {{listGood}} -->
+    <!-- <div>showBottomMenu的值：{{showBottomMenu}}</div> -->
+    <!-- {{listgoods}} -->
     <!-- <div class>{{listData}}</div> -->
     <div class="allGoods_menu">
       <aside>
@@ -15,33 +16,39 @@
 
       <article class="listpage">
         <div class="listpage_title">{{categoryTitle}}</div>
-        <goodsCard v-for="item in filterGood" :item="item" :key="item.id" @addgoods="addGoods"></goodsCard>
+        <goodsCard
+          v-for="item in listgoods"
+          :item="item"
+          :key="item.id"
+          @show-bottom-menu="showbottom_menu"
+        ></goodsCard>
       </article>
     </div>
-    <shoppingCart :title="show_item.title" :price="show_item.priceSell" :url="getbottomimage()"></shoppingCart>
+    <shoppingCart
+      :show.sync="showBottomMenu"
+      :title="show_item.title"
+      :price="show_item.priceSell"
+      :url="getbottomimage()"
+    ></shoppingCart>
   </div>
 </template>
 
 <script>
 let _ = window._;
-let $ = window.$;
 import axios from "axios";
 import goodsCard from "@/component/listArea/goodsCard.vue";
 import shoppingCart from "@/component/listArea/shoppingCart.vue";
-// Q
-let $bottom_menu = $("#bottom_menu");
-console.log("$bottom_menu", $bottom_menu);
-$bottom_menu.css("display", "none");
 
 export default {
   name: "listGoods",
   data: function () {
     return {
+      showBottomMenu: false,//底部菜单的显示隐藏
       categoryTitle: null, //商品分类名称
       listData: [], //用于输出商品分类的数组
       activeKey: 0,
-      listGood: [], //原商品数组
-      filterGood: [], //过滤后的商品数组
+      listgoods: [], //原商品数组
+      // filterGood: [], //过滤后的商品数组
       categoryId: null, //商品分类的id
       show_item: { title: "小米", priceSell: "123" }, //当前需要加入购物车的item
     };
@@ -51,24 +58,23 @@ export default {
     goodsCard,
     shoppingCart,
   },
-  computed:{
-    findJson:function(){
-      // let findJson1={}; 
-      return 123
-    }
+  computed: {
+    findJson: function () {
+      let findJson1 = { category: this.categoryId };
+      return findJson1;
+    },
   },
   methods: {
-    //tab切换后的回调函数
+    // #region 左侧菜单的切换tab切换后的回调函数
     onChange(index) {
       // debugger;
       //vant组件提供的功能
       // console.log(`listData[index]._id:`, this.listData[index]._id);
       this.categoryId = this.listData[index]._id;
       this.categoryTitle = this.listData[index].title; //获取商品分类类目名称
-      // this.getGoods();
-      this.filter(this.categoryId); //引用商品过滤函数
-      // this.getGoods();
+      this.getGoods(); //每次的categoryId变化的时候，都需要重新再请求一次获取商品列表
     },
+    // #endregion
 
     // #region ajax获取商品列表函数
     getGoods: async function () {
@@ -77,7 +83,7 @@ export default {
         url: "https://www.dmagic.cn/info/getCommonList",
         data: {
           // 一开始的时候不要输入非固定值的
-          findJson: {},
+          findJson: this.findJson,
           pageIndex: 1,
           pageSize: 20,
           _systemId: "sys_chenbowen",
@@ -86,8 +92,8 @@ export default {
       });
       let { data } = response;
       let { list } = data;
-      this.listGood = list;
-      // console.log("商品列表listGood", this.listGood);//需要注意this的指向问题
+      this.listgoods = list;
+      // console.log("商品列表listGood", this.listgoods);//需要注意this的指向问题
     },
     //#endregion
 
@@ -98,7 +104,7 @@ export default {
         url: "https://www.dmagic.cn/info/getCommonList",
         data: {
           // 一开始的时候不要输入非固定值的
-          findJson: {},
+          // findJson: {},
           pageIndex: 1,
           pageSize: 20,
           _systemId: "sys_chenbowen",
@@ -113,22 +119,25 @@ export default {
     // #endregion
 
     // #region 过滤商品函数
-    filter: function (categoryId) {
-      console.log("filterGoods函数categoryId", categoryId);
-      console.log("filterGoods函数的this.listGood", this.listGood); // Q 一开始的时候是空的
+    // filter: function (categoryId) {
+    //   console.log("filterGoods函数categoryId", categoryId);
+    //   console.log("filterGoods函数的this.listgoods", this.listgoods); // Q 一开始的时候是空的
 
-      this.filterGood = this.listGood.filter((item) => {
-        console.log("filter函数categoryId", categoryId);
-        return item.category == categoryId;
-      }); //返回商品类目和id值相同的商品
-      console.log("filterGoods函数filterGood", this.filterGood);
-      // console.log("this.listGood", this.listGood);
-    },
+    //   this.filterGood = this.listgoods.filter((item) => {
+    //     console.log("filter函数categoryId", categoryId);
+    //     return item.category == categoryId;
+    //   }); //返回商品类目和id值相同的商品
+    //   console.log("filterGoods函数filterGood", this.filterGood);
+    //   // console.log("this.listgoods", this.listgoods);
+    // },
     // #endregion
 
-    // #region 添加商品
-    addGoods: function (item) {
-      this.show_item = item;
+    // #region 显示底部菜单
+    showbottom_menu: function (item) {
+      console.log(' 显示底部菜单函数this.showBottomMenu1', this.showBottomMenu);
+      this.showBottomMenu = true;
+      console.log(' 显示底部菜单函数this.showBottomMenu2', this.showBottomMenu);
+      this.show_item = item; //需要加入购物车的商品
       // console.log("item", item);
       // console.log("this.show_item", this.show_item);
     },
@@ -136,9 +145,6 @@ export default {
 
     // #region 获取底部菜单商品图片
     getbottomimage: function () {
-      // let $bottom_menu = $("#bottom_menu");
-      // $bottom_menu.style.display = block;
-      $bottom_menu.css("display", "block");
       // console.log("getbottomimage的show_item", this.show_item);
       let url = _.get(
         this.show_item,
@@ -150,9 +156,15 @@ export default {
     // #endregion
   },
   async created() {
-    await this.getGoods();
+    //使用过滤商品函数方法的函数执行顺序
+    // await this.getGoods();
+    // await this.getCategory();
+    // this.onChange(0); //获取最开始的商品分类类目名称
+
+    //第一步获取商品分类列表，然后获取当前所在分类的id值，根据其id值再去输出相应的商品列表
     await this.getCategory();
-    this.onChange(0); //获取最开始的商品分类类目名称
+    await this.onChange(0); //获取最开始的商品分类类目名称
+    this.getGoods();
 
     // this.onChange(0);
     // this.filter(this.categoryId);

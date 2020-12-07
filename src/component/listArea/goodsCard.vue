@@ -8,7 +8,7 @@
       <div class="goods_card_article_detail" v-html="item._detail"></div>
       <div class="goods_card_article_priceSell">
         <span class="goods_card_article_priceSell_price">￥{{item.priceSell}}</span>
-        <span class="iconfont icon-tianjia"  @click="$emit('addgoods',item)"></span>
+        <span class="iconfont icon-tianjia" @click="$emit('show-bottom-menu',item)"></span>
       </div>
     </article>
   </div>
@@ -77,6 +77,7 @@ export default {
   color: red;
   padding: 0 0 0 10px;
   height: 30px;
+  display: flex;
 }
 
 .goods_card_article_priceSell_price {
