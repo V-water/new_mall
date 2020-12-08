@@ -7,7 +7,7 @@
     <!-- 底部菜单 -->
     <div class="menu_bottom">
       <div class="menu_1">
-        <router-link to="/">
+        <router-link to="/mall_main">
           <div class="iconfont icon-shouye" style="font-size: 20px"></div>
           <div>首页</div>
         </router-link>

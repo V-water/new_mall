@@ -7,13 +7,16 @@ import mall_main from "./page/mall_main.vue";
 
 // #region listGoods
 import listGoods from "./page/listGoods.vue";
+import goodsDetail from "./page/detailCard.vue";
 // #endregion
 
 //创建 router 实例，然后传`router`配置
 const router = new VueRouter({
   routes: [
-    { path: '/', component: mall_main },
+    { path: '/', redirect: '/mall_main', },
+    { path: '/mall_main', component: mall_main, },
     { path: '/listGoods', component: listGoods, },
+    { path: '/goodsDetail', component: goodsDetail, },
   ]
 })
 

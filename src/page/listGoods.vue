@@ -1,10 +1,11 @@
 <template>
-  <div class="allbackground">
+  <div class="listGoods_background">
     <!-- <div>showBottomMenu的值：{{showBottomMenu}}</div> -->
     <!-- {{listgoods}} -->
     <!-- <div class>{{listData}}</div> -->
+    <!-- <collectshare></collectshare> -->
     <div class="allGoods_menu">
-      <aside>
+      <aside class="allGoods_menu_aside">
         <van-sidebar v-model="activeKey" @change="onChange">
           <van-sidebar-item
             v-for="category in listData"
@@ -36,14 +37,15 @@
 <script>
 let _ = window._;
 import axios from "axios";
-import goodsCard from "@/component/listArea/goodsCard.vue";
-import shoppingCart from "@/component/listArea/shoppingCart.vue";
+import goodsCard from "@/components/listGoods/goodsCard.vue";
+import shoppingCart from "@/components/listGoods/shoppingCart.vue";
+// import collectshare from "@/components/goodsDetail/collect-share.vue";
 
 export default {
   name: "listGoods",
   data: function () {
     return {
-      showBottomMenu: false,//底部菜单的显示隐藏
+      showBottomMenu: false, //底部菜单的显示隐藏
       categoryTitle: null, //商品分类名称
       listData: [], //用于输出商品分类的数组
       activeKey: 0,
@@ -57,6 +59,7 @@ export default {
     // area1,
     goodsCard,
     shoppingCart,
+    // collectshare,
   },
   computed: {
     findJson: function () {
@@ -134,12 +137,8 @@ export default {
 
     // #region 显示底部菜单
     showbottom_menu: function (item) {
-      console.log(' 显示底部菜单函数this.showBottomMenu1', this.showBottomMenu);
       this.showBottomMenu = true;
-      console.log(' 显示底部菜单函数this.showBottomMenu2', this.showBottomMenu);
       this.show_item = item; //需要加入购物车的商品
-      // console.log("item", item);
-      // console.log("this.show_item", this.show_item);
     },
     // #endregion
 
@@ -173,46 +172,5 @@ export default {
 </script>
 
 <style>
-.allbackground{
-  height: 100vw;
-  background-color: rgb(248, 248, 248);
-}
-.allGoods_menu {
-  /* border: 1px black solid; */
-  z-index: 1;
-  margin-left: auto;
-  margin-right: auto;
-  background-color: #fff;
-  width: 640px;
-  display: flex;
-}
 
-/* #region 左侧菜单样式 */
-.van-sidebar {
-  width: 135px;
-}
-
-.van-sidebar-item {
-  padding-left: 10px;
-}
-
-.van-sidebar-item__text {
-  padding-left: 12px;
-  line-height: 80px;
-  font-weight: bold;
-}
-
-.van-sidebar-item {
-  padding: 0;
-  margin: 0;
-}
-
-.van-sidebar-item--select::before {
-  height: 100%;
-  width: 2px;
-}
-.van-sidebar-item--select {
-  color: #666;
-}
-/* #endregion */
 </style>

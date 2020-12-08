@@ -21,11 +21,11 @@
       </van-swipe>
       <div class="block">
         <div style="background: rgb(242, 242, 242)">
-          <mall_goods_card
-            v-for="item in listData"
-            :item="item"
-            :key="item.id"
-          ></mall_goods_card>
+            <mall_goods_card
+              v-for="item in listData"
+              :item="item"
+              :key="item.id"
+            ></mall_goods_card>
           <a href="#" class="lookAll">点击查看全部商品</a>
         </div>
       </div>
@@ -45,7 +45,7 @@ vueMethods.getList = async function () {
       findJson: this.findJson, //拼接查询参数
       pageIndex: 1,
       pageSize: 10,
-      _systemId: "sys_zhangjiawei",
+      _systemId: "sys_chenbowen",
       _dataType: this.dataType,
     },
   });

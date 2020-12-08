@@ -1,13 +1,146 @@
-/* #region area样式 */
-.listpage {
-    padding: 10px;
+/* 所有商品界面 */
+/* #region 响应式布局界面 */
+@media screen and (min-width:640px) {
+  .goods_card {
+    height: 120px;
   }
-  
-  .listpage_title {
-    font-size: 14px;
-    font-weight: 700;
-    color: #666;
-    padding-bottom: 10px;
+}
+
+@media screen and (max-width:360px) {
+  .goods_card {
+    height: 65px;
   }
+}
 /* #endregion */
 
+/*#region listGoods页面样式  */
+.listGoods_background {
+  height: 100vw;
+  background-color: rgb(248, 248, 248);
+}
+
+.allGoods_menu {
+  /* border: 1px black solid; */
+  z-index: 1;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: #fff;
+  max-width: 640px;
+  min-width: 360px;
+  display: flex;
+}
+/* #endregion */
+
+/* #region listGoods页面的左侧菜单样式 */
+.allGoods_menu_aside {
+  width: 25%;
+  /* border: 1px black solid; */
+}
+.van-sidebar {
+  width: 100%;
+}
+
+.van-sidebar-item__text {
+  padding-left: 10%;
+  line-height: 80px;
+  font-weight: bold;
+}
+
+.van-sidebar-item {
+  padding: 0;
+  margin: 0;
+}
+
+.van-sidebar-item--select::before {
+  height: 100%;
+  width: 2px;
+}
+.van-sidebar-item--select {
+  color: #666;
+}
+/* #endregion */
+
+/* #region listGoods页面的右侧样式--listpage */
+.listpage {
+  padding: 2%;
+  /* border: 1px red solid; */
+  width: 75%;
+}
+
+.listpage_title {
+  font-size: 14px;
+  font-weight: 700;
+  color: #666;
+  padding-bottom: 10px;
+}
+/* #endregion */
+
+/* #region listGoods页面的右侧商品卡片样式 */
+.goods_card {
+  display: flex;
+  max-height: 120px;
+  min-height: 65px;
+  height: 20vw;
+  /* border: 1px red solid; */
+  width: 10;
+  position: relative;
+  
+}
+
+.goods_card_aside
+ {
+  /* border: 1px black solid; */
+  /* width: 145px; */
+  width: 35%;
+  height: 100%;
+overflow: hidden;
+}
+
+.goods_card_aside_img{
+  width: 100%;
+  height: 100%;
+}
+
+.goods_card_artical {
+  width: 292px;
+  /* border: 1px black solid; */
+}
+
+.goods_card_article_title {
+  width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding-left: 10px;
+}
+
+.goods_card_article_detail {
+  max-height: 40px;
+  font-size: 12px;
+  color: #999;
+  padding: 5px 10px;
+}
+
+.goods_card_article_priceSell {
+  /* border: 1px black solid; */
+  width: 150px;
+  color: red;
+  padding: 0 0 0 10px;
+  height: 30px;
+  display: flex;
+}
+
+.goods_card_article_priceSell_price {
+  /* border: 1px black solid; */
+  display: inline-block;
+  width: 110px;
+  height: 100%;
+}
+
+.icon-tianjia {
+  font-size: 24px;
+  height: 100%;
+  /* border: 1px black solid; */
+  display: inline-block;
+  cursor: pointer;
+}
+/* #endregion */
