@@ -14,7 +14,7 @@
       <!-- <div>
         <span class="goodsDetial_text1">净含量：</span>
         <span class="goodsDetial_text2">6个装</span>
-      </div> -->
+      </div>-->
       <div>
         <span class="goodsDetial_text1">系列：</span>
         <span class="goodsDetial_text2">{{listgoods.category}}</span>
@@ -50,11 +50,22 @@
       </div>
     </div>
     <!-- #endregion  -->
+
+    <!-- #region 加入购物车 -->
+    <div class="addToShoppingCart">
+      <van-goods-action>
+        <van-goods-action-icon icon="chat-o" text="客服" color="#ee0a24" />
+        <van-goods-action-icon icon="cart-o" text="购物车" />
+        <van-goods-action-button type="warning" text="加入购物车" />
+        <van-goods-action-button type="danger" text="立即购买" />
+      </van-goods-action>
+    </div>
+    <!-- #endregion  -->
   </div>
 </template>
 
 <script>
-let _=window._
+let _ = window._;
 import axios from "axios";
 export default {
   data: function () {
@@ -70,16 +81,23 @@ export default {
     },
   },
   methods: {
+    // #region 获取该页面的路由
     geturl: function () {
-      // let example = window.location.herf;
-      let url = document.URL;
-      // console.log(url);
-      let arr1 = url.split("?"); //分割每组参数，保存到数组
-      let arr2 = arr1[1];
-      let arr3 = arr2.split("=");
-      this.id = arr3[1];
-      console.log("this.id", this.id);
+      // // 下面这是原生事件的写法。动态路由获取值
+      // let example = window.location.href;
+      // console.log(example);
+      // let url = document.URL;
+      // // console.log(url);
+      // let arr1 = url.split("?"); //分割每组参数，保存到数组
+      // let arr2 = arr1[1];
+      // let arr3 = arr2.split("=");
+      // this.id = arr3[1];
+      // console.log("this.id", this.id);
+
+      this.id = this.$route.query.id;
+      console.log(`this.$route.query:`, this.$route.query);
     },
+    // #endregion
 
     // #region 获取商品
     getGoods: async function () {
@@ -126,6 +144,25 @@ export default {
 </script>
 
 <style>
+.addToShoppingCart {
+  /* border: 1px black solid; */
+  width: 100%;
+  height: 55px;
+  position: fixed;
+  bottom: 0%;
+  z-index: 50;
+}
+
+.van-goods-action {
+  padding: 0;
+  margin: 0;
+  height: 100%;
+}
+
+.van-goods-action-button {
+  height: 100%;
+}
+
 .goodsDetail_background {
   width: 100%;
   height: 100vw;
@@ -135,7 +172,9 @@ export default {
 .goodsDetail {
   /* border: 1px black solid; */
   background-color: #fff;
-  width: 510px;
+  /* TODO  */
+  max-width: 510px;
+  /* min-width:  ; */
   margin-left: auto;
   margin-right: auto;
   padding: 10px;

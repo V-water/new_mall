@@ -1,9 +1,10 @@
 <template>
   <div class="goods_card">
     <aside class="goods_card_aside">
-      <img class="goods_card_aside_img" :src="getimg()" />
+    <a :href="`#/goodsDetail?id=${item._id}`">
+      <img class="goods_card_aside_img" :src="getimg()" /></a>
     </aside>
-    <article class="goods_card_article">
+    <article class="goods_card_article" >
       <div class="goods_card_article_title">{{item.title}}</div>
       <div class="goods_card_article_detail" v-html="item._detail"></div>
       <div class="goods_card_article_priceSell">

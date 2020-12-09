@@ -1,12 +1,4 @@
 <template>
-  <!-- <van-popup
-  v-model="show"
-  closeable
-  close-icon="close"
-  :get-container="getContainer"
-  position="bottom"
-  :style="{ height: '30%' }"
-  >-->
   <!-- 通过v-if来控制组件的显示和隐藏 -->
   <div>
     <div class="bottom_menu_hidebox" v-if="show_bottomMenu"></div>
@@ -32,20 +24,12 @@
       <div>
         <span class="bottom_menu_text2">购买数量:</span>
         <span class="bottom_menu_input_number">
-            <inputNumber countstart="1" addcount="1" bottom_number="1" width="100" height="30"></inputNumber>
-          <!-- <el-input-number
-            size="mini"
-            v-model="num"
-            @change="handleChange"
-            :min="1"
-            :max="10"
-            label="描述文字"
-          ></el-input-number>-->
+          <inputNumber countstart="1" addcount="1" bottom_number="1" width="100" height="30"></inputNumber>
         </span>
       </div>
-      <div>
+      <div class="shoppingCart-buy">
         <van-goods-action>
-          <van-goods-action-button type="warning" text="加入购物车" />
+          <van-goods-action-button @click="addgodds_to_shoppingCart()" type="warning" text="加入购物车" />
           <van-goods-action-button type="danger" text="立即购买" />
         </van-goods-action>
       </div>
@@ -70,10 +54,15 @@ export default {
       default: "暂无商品价格",
       type: [Number, String], //又支持Number，又支持String类型的，可以用数组括起来
     },
+    detail: {
+      default: "暂无商品详情",
+      type: [Number, String], //又支持Number，又支持String类型的，可以用数组括起来
+    },
     url: {
       default:
         "https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=3946756184,1966392333&fm=26&gp=0.jpg",
     },
+    id: null,
     show: null,
   },
   data() {
@@ -82,7 +71,6 @@ export default {
       //   price1: this.price,
       num: 1, //计数器
       //   show: true,//底部弹窗
-      //   TODO
       show_bottomMenu: this.show, //底部弹窗，show是变化的，要监测show的变化并且将相应的值及时赋给show_bottomMenu
     };
   },
@@ -92,15 +80,38 @@ export default {
     },
   },
   methods: {
+    // TODO addgodds_to_shoppingCart
+    addgodds_to_shoppingCart() {
+      // 读取localStorage已有的商品信息
+      let storage=JSON.parse(localStorage.shoppingCartData)
+      console.log('storage',storage);
+
+      let addNeeded = {
+        //需要添加的商品的信息
+        title: this.title,
+        price: this.price,
+        detail:this.detail,
+        id: this.id, //通过listGoods.vue页面，点击添加按钮传过来的值。然后通过id来输出对应的商品信息
+        number: null,
+      };
+      console.log("addNeeded", addNeeded);
+
+      // 存储到localStorage里
+      // let strAddNeeded = JSON.stringify(addNeeded);
+      // console.log("strAddNeeded", strAddNeeded);
+
+      storage.push(addNeeded)//先将localStorage里已有的数据，和需要新加的数据整合起来。push是添加在数组后。unshift是添加在数组前。
+      let str= JSON.stringify(storage);
+      console.log(`str:`, str);
+      localStorage.shoppingCartData = str;
+      // alert('添加商品成功')
+    },
     getBottomImg() {
       return this.url;
     },
     handleChange(value) {
       console.log(value);
     },
-    //  getContainer() {//底部弹窗组件的显示
-    //   return document.querySelector('.icon-tianjia');
-    // },
     closeBottomMenu: function () {
       //关闭底部菜单
       this.show_bottomMenu = false;
@@ -112,6 +123,12 @@ export default {
 </script>
 
 <style>
+/* #region 加入购物车部分的样式*/
+.shoppingCart-buy {
+  height: 40px;
+}
+/* #endregion */
+
 /* 遮罩部分 */
 .bottom_menu_hidebox {
   position: fixed;
@@ -165,8 +182,8 @@ export default {
   /* border: 1px black solid; */
 }
 
-.bottom_menu_input_number{
-    display: inline-block;
+.bottom_menu_input_number {
+  display: inline-block;
 }
 
 .icon-guanbi {

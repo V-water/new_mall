@@ -19,7 +19,7 @@
         </router-link>
       </div>
       <div class="menu_1">
-        <router-link to="">
+        <router-link to="/shoppingCartPage">
           <div class="iconfont icon-gouwuche" style="font-size: 20px"></div>
           <div>购物车</div>
         </router-link>
@@ -39,6 +39,10 @@
 
 <script>
 // import mall_main from "./components/mall_main";
+// let arr=[{_id:"5fcc9b2ba870243f0cdd9c1d",title:"phone"},{_id:"5fc668c14e8a7425a4b25d92",title:"computer"}]
+// let strarr=JSON.stringify(arr)
+// localStorage.shoppingCartData=strarr
+
 
 export default {
   name: "App",

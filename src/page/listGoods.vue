@@ -29,6 +29,8 @@
       :show.sync="showBottomMenu"
       :title="show_item.title"
       :price="show_item.priceSell"
+      :id="show_item._id"
+      :detail="show_item._detail"
       :url="getbottomimage()"
     ></shoppingCart>
   </div>
@@ -172,5 +174,4 @@ export default {
 </script>
 
 <style>
-
 </style>

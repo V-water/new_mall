@@ -1,7 +1,6 @@
 <template>
   <div>
     <div class="box_1">
-      <!-- TODO 获取商品详情卡片，自定义事件 -->
       <div class="goods_img" >
         <a :href="`#/goodsDetail?id=${item._id}`">
           <img class="box_commodity" :src="getImg()" />
