@@ -24,7 +24,15 @@
       <div>
         <span class="bottom_menu_text2">购买数量:</span>
         <span class="bottom_menu_input_number">
-          <inputNumber countstart="1" addcount="1" bottom_number="1" width="100" height="30"></inputNumber>
+          <inputNumber
+            countstart="1"
+            addcount="1"
+            bottom_number="1"
+            width="100"
+            height="30"
+            @getCountNumber1="get_count_Number1"
+            @getCountNumber2="get_count_Number2"
+          ></inputNumber>
         </span>
       </div>
       <div class="shoppingCart-buy">
@@ -41,6 +49,70 @@
 
 <script>
 import inputNumber from "./inputNumber.vue";
+let shoppingCartMethods = {};
+// #region 获取计数器组件的值
+// 数量减少
+shoppingCartMethods.get_count_Number1 = function (countNumber) {
+  this.count = countNumber;
+  console.log("this.count",this.count)
+};
+
+// 数量增多
+shoppingCartMethods.get_count_Number2 = function (countNumber) {
+  this.count = countNumber;
+  console.log("this.count",this.count)
+};
+// #endregion
+
+// #region 将商品添加到购物车函数
+shoppingCartMethods.addgodds_to_shoppingCart = function () {
+  // 读取localStorage已有的商品信息
+  let storage = JSON.parse(localStorage.shoppingCartData);
+  console.log("storage", storage);
+
+  let addNeeded = {
+    //需要添加的商品的信息
+    title: this.title,
+    price: this.price,
+    detail: this.detail,
+    id: this.id, //通过listGoods.vue页面，点击添加按钮传过来的值。然后通过id来输出对应的商品信息
+    // TODO 通过listGoods界面的底部菜单组件获取商品图片传入localStorage
+    url: this.url,
+    number: this.count,
+  };
+  console.log("addNeeded", addNeeded);
+
+  // 存储到localStorage里
+  // let strAddNeeded = JSON.stringify(addNeeded);
+  // console.log("strAddNeeded", strAddNeeded);
+
+  storage.push(addNeeded); //先将localStorage里已有的数据，和需要新加的数据整合起来。push是添加在数组后。unshift是添加在数组前。
+  let str = JSON.stringify(storage);
+  console.log(`str:`, str);
+  localStorage.shoppingCartData = str;
+  alert("添加商品成功");
+};
+// #endregion
+
+// #region 底部购物车组件获取图片函数
+shoppingCartMethods.getBottomImg = function () {
+  return this.url;
+};
+// #endregion
+
+shoppingCartMethods.handleChange = function (value) {
+  console.log(value);
+};
+
+// #region 关闭底部购物车组件函数
+shoppingCartMethods.closeBottomMenu = function () {
+  //关闭底部菜单
+  this.show_bottomMenu = false;
+  this.$emit("update:show", false);
+  //原生的update事件，更新该组件内部定义的show的值，由于使用了sync，因此外部的showBottomMenu值会show的值进行同步
+};
+// #endregion
+
 export default {
   components: {
     inputNumber,
@@ -67,8 +139,7 @@ export default {
   },
   data() {
     return {
-      //   title1: this.title,
-      //   price1: this.price,
+      count:null, //当前计数器的值
       num: 1, //计数器
       //   show: true,//底部弹窗
       show_bottomMenu: this.show, //底部弹窗，show是变化的，要监测show的变化并且将相应的值及时赋给show_bottomMenu
@@ -79,46 +150,7 @@ export default {
       this.show_bottomMenu = this.show;
     },
   },
-  methods: {
-    // TODO addgodds_to_shoppingCart
-    addgodds_to_shoppingCart() {
-      // 读取localStorage已有的商品信息
-      let storage=JSON.parse(localStorage.shoppingCartData)
-      console.log('storage',storage);
-
-      let addNeeded = {
-        //需要添加的商品的信息
-        title: this.title,
-        price: this.price,
-        detail:this.detail,
-        id: this.id, //通过listGoods.vue页面，点击添加按钮传过来的值。然后通过id来输出对应的商品信息
-        number: null,
-      };
-      console.log("addNeeded", addNeeded);
-
-      // 存储到localStorage里
-      // let strAddNeeded = JSON.stringify(addNeeded);
-      // console.log("strAddNeeded", strAddNeeded);
-
-      storage.push(addNeeded)//先将localStorage里已有的数据，和需要新加的数据整合起来。push是添加在数组后。unshift是添加在数组前。
-      let str= JSON.stringify(storage);
-      console.log(`str:`, str);
-      localStorage.shoppingCartData = str;
-      // alert('添加商品成功')
-    },
-    getBottomImg() {
-      return this.url;
-    },
-    handleChange(value) {
-      console.log(value);
-    },
-    closeBottomMenu: function () {
-      //关闭底部菜单
-      this.show_bottomMenu = false;
-      this.$emit("update:show", false);
-      //原生的update事件，更新该组件内部定义的show的值，由于使用了sync，因此外部的showBottomMenu值会show的值进行同步
-    },
-  },
+  methods: { ...shoppingCartMethods },
 };
 </script>
 

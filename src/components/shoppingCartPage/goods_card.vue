@@ -3,16 +3,17 @@
     <div class="shoppingCart-table-input">
       <input class="shoppingCart_checkbox" type="checkbox" />
     </div>
+    <!-- TODO 购物车页面获取商品图片 -->
     <img
       class="shoppingCartPage_goodsCard_img"
-      :src="getimg()"
+      :src="item.url"
     />
     <div class="shoppingCartPage_goodsCard_information">
       <div>{{item.title}}</div>
-      <div class="shoppingCartPage_goodsCard_detail">商品详情{{item.detail}}</div>
+      <div class="shoppingCartPage_goodsCard_detail" v-html="item.detail"></div>
       <div>
         <span class="shoppingCartPage_goodsCard_price">￥{{item.price}}</span>
-        <span class="shoppingCartPage_goodsCard_number">数量x1</span>
+        <span class="shoppingCartPage_goodsCard_number">x{{item.number}}</span>
       </div>
     </div>
   </div>

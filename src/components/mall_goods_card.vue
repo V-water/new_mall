@@ -8,19 +8,36 @@
       </div>
       <div class="goods_title">{{ item.title }}</div>
       <div class="box_2" style="width: 125px">￥{{ item.priceSell }}</div>
-      <div class="iconfont icon-gouwuche box_car"></div>
+      <div class="iconfont icon-gouwuche box_car" @click="$emit('show-bottom-menu',item)"></div>
+    <!-- 引用底部菜单组件
+    <shoppingCart
+      :show.sync="showBottomMenu"
+      :title="show_item.title"
+      :price="show_item.priceSell"
+      :id="show_item._id"
+      :detail="show_item._detail"
+      :url="getbottomimage()"
+    ></shoppingCart> -->
     </div>
   </div>
 </template>
 
 <script>
+// import shoppingCart from "@/components/listGoods/shoppingCart.vue";
+
 let _ = window._;
 export default {
+  components:{
+    // shoppingCart
+  },
   props: ["item"],
   data: function () {
     return {};
   },
   methods: {
+    // #region 添加商品到购物车
+    addGoods_To_shoppingCart:function(){},
+    // #endregion
     //函数：获取商品图片的函数
     getImg: function () {
       let imgFirst = "./img/zhanwei.png";

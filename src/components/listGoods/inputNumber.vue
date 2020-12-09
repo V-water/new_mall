@@ -34,12 +34,17 @@ export default {
       if (this.count <= this.bottom) {
         return (this.open1 = true);
       } else {
-        return (this.count = this.count - this.add);
+        this.count = this.count - this.add
+        // TODO 自定义事件，并发送this.count传值
+        this.$emit("getCountNumber1", this.count);
+        return this.count;
       }
     },
     fn2: function () {
       this.open1 = false;
       this.count = this.count + this.add;
+      // TODO 自定义事件，并发送this.count传值
+      this.$emit("getCountNumber2", this.count);
       return this.count, this.open1;
     },
   },
@@ -48,7 +53,6 @@ export default {
     styleDialog: function () {
       return {
         //需要 return
-        // NOTE this.width
         width: `${this.width}px`,
         height: `${this.height}px`,
         "margin-left": `${this.ml}px`,

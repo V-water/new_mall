@@ -1,6 +1,6 @@
 <template>
   <div>
-    <table border="1">
+    <table class="shoppingCartPage_table" border="1">
       <tr>
         <div class="shoppingCart_table_head">
           <div class="shoppingCart-table-input">
@@ -65,8 +65,9 @@ export default {
 </script>
 
 <style>
-table {
+.shoppingCartPage_table {
   border-collapse: collapse;
+  margin-bottom: 50px;
 }
 
 .shoppingCart-table {

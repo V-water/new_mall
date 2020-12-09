@@ -172,7 +172,6 @@ export default {
 .goodsDetail {
   /* border: 1px black solid; */
   background-color: #fff;
-  /* TODO  */
   max-width: 510px;
   /* min-width:  ; */
   margin-left: auto;

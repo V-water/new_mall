@@ -17,6 +17,7 @@
 
       <article class="listpage">
         <div class="listpage_title">{{categoryTitle}}</div>
+    <!-- TODO listGoods页面引用商品卡片goodsCard组件，自定义事件 -->
         <goodsCard
           v-for="item in listgoods"
           :item="item"
@@ -25,6 +26,7 @@
         ></goodsCard>
       </article>
     </div>
+    <!-- TODO listGoods页面引用底部菜单shoppingCart组件 -->
     <shoppingCart
       :show.sync="showBottomMenu"
       :title="show_item.title"
@@ -126,7 +128,7 @@ export default {
     // #region 过滤商品函数
     // filter: function (categoryId) {
     //   console.log("filterGoods函数categoryId", categoryId);
-    //   console.log("filterGoods函数的this.listgoods", this.listgoods); // Q 一开始的时候是空的
+    //   console.log("filterGoods函数的this.listgoods", this.listgoods); 
 
     //   this.filterGood = this.listgoods.filter((item) => {
     //     console.log("filter函数categoryId", categoryId);
