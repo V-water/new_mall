@@ -2,30 +2,32 @@
   <div>
     <div class="bigg">
       <div class="box_head">码帮商城</div>
-      <van-swipe class="my-swipe" :autoplay="3000" indicator-color="white">
-        <van-swipe-item class="box_img">
-          <img
-            src="https://img.yzcdn.cn/upload_files/2018/12/11/Ft8u0o9RPHyxDwahv19iH8ixFWXM.jpg!large.jpg"
-          />
-        </van-swipe-item>
-        <van-swipe-item class="box_img">
-          <img
-            src="https://img.yzcdn.cn/upload_files/2018/12/11/FsfFgmOHGm6WZsnloJo22RImEJ6p.jpg!large.jpg"
-          />
-        </van-swipe-item>
-        <van-swipe-item class="box_img">
-          <img
-            src="https://img.yzcdn.cn/upload_files/2018/12/11/FvAWQmPIRX4Qr6baCOfvf1rTOHBj.jpg!large.jpg"
-          />
-        </van-swipe-item>
-      </van-swipe>
+      <div>
+        <van-swipe class="my-swipe" :autoplay="3000" indicator-color="white">
+          <van-swipe-item>
+            <img
+              src="https://img.yzcdn.cn/upload_files/2018/12/11/Ft8u0o9RPHyxDwahv19iH8ixFWXM.jpg!large.jpg"
+            />
+          </van-swipe-item>
+          <van-swipe-item>
+            <img
+              src="https://img.yzcdn.cn/upload_files/2018/12/11/FsfFgmOHGm6WZsnloJo22RImEJ6p.jpg!large.jpg"
+            />
+          </van-swipe-item>
+          <van-swipe-item>
+            <img
+              src="https://img.yzcdn.cn/upload_files/2018/12/11/FvAWQmPIRX4Qr6baCOfvf1rTOHBj.jpg!large.jpg"
+            />
+          </van-swipe-item>
+        </van-swipe>
+      </div>
       <div class="block">
         <div style="background: rgb(242, 242, 242)">
-            <mall_goods_card
-              v-for="item in listData"
-              :item="item"
-              :key="item.id"
-            ></mall_goods_card>
+          <mall_goods_card
+            v-for="item in listData"
+            :item="item"
+            :key="item.id"
+          ></mall_goods_card>
           <a href="#" class="lookAll">点击查看全部商品</a>
         </div>
       </div>
@@ -77,7 +79,8 @@ export default {
 .bigg {
   background: #f8f8f8;
   height: 1175px;
-  width: 100%;
+  width: 360px;
+  margin: 0 auto;
 }
 .box_head {
   height: 90px;
@@ -89,39 +92,52 @@ export default {
   color: #000;
 }
 
-.box_img {
-  width: 100vw;
-  height: 135px;
-}
-
 .my-swipe .van-swipe-item {
+  height: 128px;
   color: #fff;
   font-size: 20px;
-  line-height: 135px;
+  line-height: 128px;
   text-align: center;
-  background-color: #39a9ed;
 }
 
 .my-swipe img {
-  width: 100%;
-  height: 100%;
+  width: 360px;
+  height: 128px;
   /* 通过CSS3的object-fit调整图片的适应盒子规则 */
   object-fit: cover;
 }
 
 .block {
   display: flex;
-  width: 380px;
+  width: 360px;
   margin: 0 auto;
   background: #f8f8f8;
 }
+
+/* @media screen and (max-width: 360px) {
+  .block {
+    display: flex;
+    width: 360px;
+    margin: 0 auto;
+    background: #f8f8f8;
+  }
+} */
+
+/* @media screen and (max-width: 640px) {
+  .block {
+    display: flex;
+    width: 380px;
+    margin: 0 auto;
+    background: #f8f8f8;
+  }
+} */
 
 .plase {
   height: 45px;
 }
 .lookAll {
   display: block;
-  width: 380px;
+  width: 360px;
   height: 50px;
   background-color: #fff;
   clear: both;

@@ -19,13 +19,13 @@
         </router-link>
       </div>
       <div class="menu_1">
-        <router-link to="/shoppingCartPage">
+        <router-link to="1111">
           <div class="iconfont icon-gouwuche" style="font-size: 20px"></div>
           <div>购物车</div>
         </router-link>
       </div>
       <div class="menu_1">
-        <router-link to="">
+        <router-link to="/mall_login">
           <div
             class="iconfont icon-80gerenzhongxin"
             style="font-size: 20px"

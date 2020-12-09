@@ -1,13 +1,13 @@
 <template>
   <div>
     <div class="box_1">
-      <div class="goods_img" >
-        <a :href="`#/goodsDetail?id=${item._id}`">
+      <div class="goods_img">
+        <a href="#">
           <img class="box_commodity" :src="getImg()" />
         </a>
       </div>
       <div class="goods_title">{{ item.title }}</div>
-      <div class="box_2" style="width: 125px">￥{{ item.priceSell }}</div>
+      <div class="box_2" style="">￥{{ item.priceSell }}</div>
       <div class="iconfont icon-gouwuche box_car"></div>
     </div>
   </div>
@@ -36,40 +36,84 @@ export default {
 </script>
 
 <style scoped>
+@media screen and (max-width: 640px) {
+  .box_1 {
+    height: 250px;
+    width: 165px;
+    background: #fff;
+    margin: 5px 7px;
+    float: left;
+  }
+  .goods_img {
+    width: 157.5px;
+    height: 164.5px;
+    position: relative;
+  }
+  .box_commodity {
+    width: 157.5px;
+    height: 157.5px;
+    background-size: 157.5px 157.5px;
+    background-repeat: no-repeat;
+    margin: 0 4px;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+  .goods_title {
+    font-size: 20px;
+    height: 70px;
+    line-height: 70px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .box_2 {
+    width: 235px;
+    font-size: 20px;
+  }
+  .box_2,
+  .box_car {
+    color: #ff5e5c;
+    float: left;
+    margin: 20px 0;
+  }
+  .box_car {
+    font-size: 43px;
+    width: 70px;
+    height: 70px;
+  }
+}
 .box_1 {
-  height: 265px;
-  width: 165px;
+  height: 462px;
+  width: 305px;
   background: #fff;
-  margin: 5px 7px;
+  margin: 5px 7.5px;
   float: left;
 }
 .goods_img {
-  width: 157.5px;
-  height: 175.5px;
+  width: 305px;
+  height: 315px;
   position: relative;
 }
 .box_commodity {
-  width: 157.5px;
-  height: 157.5px;
-  background-size: 157.5px 157.5px;
+  width: 305px;
+  height: 305px;
+  background-size: 305px 305px;
   background-repeat: no-repeat;
   margin: 0 4px;
   position: absolute;
   top: 0;
   left: 0;
 }
-.img_logo {
-  width: 32px;
-  height: 32px;
-  position: absolute;
-  top: 0;
-  left: 10px;
-}
 .goods_title {
-  height: 40px;
-  line-height: 40px;
+  font-size: 20px;
+  height: 70px;
+  line-height: 70px;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+.box_2 {
+  width: 235px;
+  font-size: 20px;
 }
 .box_2,
 .box_car {
@@ -78,8 +122,8 @@ export default {
   margin: 20px 0;
 }
 .box_car {
-  font-size: 25px;
-  width: 40px;
-  height: 40px;
+  font-size: 43px;
+  width: 70px;
+  height: 70px;
 }
 </style>
