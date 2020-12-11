@@ -30,8 +30,9 @@
             bottom_number="1"
             width="100"
             height="30"
-            @getCountNumber1="get_count_Number1"
-            @getCountNumber2="get_count_Number2"
+            @getCountNumber1="get_count_Number"
+            @getCountNumber2="get_count_Number"
+            @getCountNumber3="get_count_Number"
           ></inputNumber>
         </span>
       </div>
@@ -51,16 +52,9 @@
 import inputNumber from "./inputNumber.vue";
 let shoppingCartMethods = {};
 // #region 获取计数器组件的值
-// 数量减少
-shoppingCartMethods.get_count_Number1 = function (countNumber) {
+// 数量减少，数量增多，数量不变
+shoppingCartMethods.get_count_Number = function (countNumber) {
   this.count = countNumber;
-  console.log("this.count",this.count)
-};
-
-// 数量增多
-shoppingCartMethods.get_count_Number2 = function (countNumber) {
-  this.count = countNumber;
-  console.log("this.count",this.count)
 };
 // #endregion
 
@@ -68,7 +62,7 @@ shoppingCartMethods.get_count_Number2 = function (countNumber) {
 shoppingCartMethods.addgodds_to_shoppingCart = function () {
   // 读取localStorage已有的商品信息
   let storage = JSON.parse(localStorage.shoppingCartData);
-  console.log("storage", storage);
+  // console.log("storage", storage);
 
   let addNeeded = {
     //需要添加的商品的信息
@@ -76,19 +70,29 @@ shoppingCartMethods.addgodds_to_shoppingCart = function () {
     price: this.price,
     detail: this.detail,
     id: this.id, //通过listGoods.vue页面，点击添加按钮传过来的值。然后通过id来输出对应的商品信息
-    // TODO 通过listGoods界面的底部菜单组件获取商品图片传入localStorage
+    // 通过listGoods界面的底部菜单组件获取商品图片传入localStorage
     url: this.url,
     number: this.count,
   };
   console.log("addNeeded", addNeeded);
 
-  // 存储到localStorage里
-  // let strAddNeeded = JSON.stringify(addNeeded);
-  // console.log("strAddNeeded", strAddNeeded);
+  let ifSame = storage.some((item) => item.id == this.id);
+  if (ifSame == true) {
+    // 找到相同商品在数组里的索引值
+    let index = storage.findIndex((item) => item.id == this.id);
+    let sameGoods = storage[index];
+    // 更改该商品的属性值
+    let sameGoods_number = sameGoods.number * 1 + this.count * 1;
+    sameGoods.number = sameGoods_number;
+    storage.splice(index,1,sameGoods);//直接就会影响数组。不需要赋值
+    console.log('storage',storage);
+  } else {
+    console.log("没有相同的商品");
+    //先将localStorage里已有的数据，和需要新加的数据整合起来。push是添加在数组后。unshift是添加在数组前。
+    storage.push(addNeeded);
+  }
 
-  storage.push(addNeeded); //先将localStorage里已有的数据，和需要新加的数据整合起来。push是添加在数组后。unshift是添加在数组前。
   let str = JSON.stringify(storage);
-  console.log(`str:`, str);
   localStorage.shoppingCartData = str;
   alert("添加商品成功");
 };
@@ -139,7 +143,7 @@ export default {
   },
   data() {
     return {
-      count:null, //当前计数器的值
+      count: null, //当前计数器的值
       num: 1, //计数器
       //   show: true,//底部弹窗
       show_bottomMenu: this.show, //底部弹窗，show是变化的，要监测show的变化并且将相应的值及时赋给show_bottomMenu

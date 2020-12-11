@@ -14,7 +14,6 @@ export default {
     countstart: null,
     addcount: null,
     bottom_number: null,
-    // TODO
     width: {}, //定义宽度和高度，可以使得不同弹窗组件宽高度不同
     height: {},
     ml: {},
@@ -30,23 +29,25 @@ export default {
     };
   },
   methods: {
-    fn1: function () {
+    fn1: function () {//点击＋号
       if (this.count <= this.bottom) {
         return (this.open1 = true);
       } else {
         this.count = this.count - this.add
-        // TODO 自定义事件，并发送this.count传值
         this.$emit("getCountNumber1", this.count);
         return this.count;
       }
     },
-    fn2: function () {
+    fn2: function () {//点击-号
       this.open1 = false;
       this.count = this.count + this.add;
-      // TODO 自定义事件，并发送this.count传值
       this.$emit("getCountNumber2", this.count);
       return this.count, this.open1;
     },
+    fn3:function(){//未加减的时候，也发送count值
+      this.$emit("getCountNumber3", this.count);
+      return this.count
+    }
   },
   computed: {
     //与 methods 对比：computed只有当其计算因子变化的时候才会被调用，属于性能优化
@@ -60,6 +61,9 @@ export default {
       };
     },
   },
+  created:function(){
+    this.fn3()
+  }
 };
 </script>
 

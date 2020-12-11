@@ -146,9 +146,14 @@ overflow: hidden;
 /* #endregion */
 
  /* #region 购物车界面样式 */
- .shoppingCart-table {
-  border: 1px black solid;
-  display: flex;
+ .shoppingCart_checkbox{
+cursor: pointer;
+margin:0 10px;
+ }
+
+ .shoppingCartPage_table {
+  border-collapse: collapse;
+  margin-bottom: 50px;
 }
 
 .shoppingCart_table_head {
@@ -171,22 +176,20 @@ overflow: hidden;
   position: absolute;
   right: 20px;
   color: rgb(43, 93, 231);
+  cursor: pointer;
 }
 
 .shoppingCartPage_goodsCard {
   display: flex;
   border: 1px black solid;
   height: 100px;
-  /* width: 500px; */
+  width: 500px;
 }
 
 .shoppingCart-table-input {
-  /* border: 1px black solid; */
-  padding: 0 5px;
   display: flex;
   align-items: center;
   justify-content: center;
-  /* width: 40px; */
 }
 
 .shoppingCartPage_goodsCard_img {
@@ -215,11 +218,45 @@ overflow: hidden;
 }
 
 .shoppingCartPage_goodsCard_number {
+  border: 1px black solid;
+  /* padding: 0 10px; */
   font-size: 14px;
+  border-radius: 5px;
   color: #666;
-  height: 20px;
+  /* height: 20px; */
   line-height: 20px;
   position: absolute;
   right: 20px;
+  cursor: pointer;
+}
+/* #endregion */
+
+/* #region 购物车界面底部结算台 */
+.check {
+  background-color: #fff;
+  border: 1px black solid;
+  position: fixed;
+  bottom: 0;
+  line-height: 50px;
+  z-index: 50;
+  width: 100%;
+  display: flex;
+}
+
+.check_text {
+  background-color: red;
+  color: #fff;
+  position: absolute;
+  right: 0;
+  padding: 0 10px;
+  cursor: pointer;
+}
+
+.cost {
+  font-size: 12px;
+  line-height: 20px;
+  color: #f60;
+  position: absolute;
+  right: 90px;
 }
 /* #endregion */
