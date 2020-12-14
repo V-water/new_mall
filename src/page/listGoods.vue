@@ -1,9 +1,5 @@
 <template>
   <div class="listGoods_background">
-    <!-- <div>showBottomMenu的值：{{showBottomMenu}}</div> -->
-    <!-- {{listgoods}} -->
-    <!-- <div class>{{listData}}</div> -->
-    <!-- <collectshare></collectshare> -->
     <div class="allGoods_menu">
       <aside class="allGoods_menu_aside">
         <van-sidebar v-model="activeKey" @change="onChange">
@@ -27,12 +23,14 @@
       </article>
     </div>
     <!-- TODO listGoods页面引用底部菜单shoppingCart组件 -->
+    <!-- 设置show_item的number属性，就算这时没有该属性，也会对对象的属性进行添加 -->
     <shoppingCart
       :show.sync="showBottomMenu"
       :title="show_item.title"
       :price="show_item.priceSell"
       :id="show_item._id"
       :detail="show_item._detail"
+      :number="show_item.number"
       :url="getbottomimage()"
     ></shoppingCart>
   </div>

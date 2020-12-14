@@ -27,17 +27,33 @@
             v-for="item in listData"
             :item="item"
             :key="item.id"
+            @show-bottom-menu="showbottom_menu"
           ></mall_goods_card>
           <a href="#" class="lookAll">点击查看全部商品</a>
         </div>
       </div>
       <div class="plase"></div>
     </div>
+    <!-- 引用底部菜单组件 -->
+    <div class="mall_goods_bottomMenu">
+      <shoppingCart
+        :show.sync="showBottomMenu"
+        :title="show_item.title"
+        :price="show_item.priceSell"
+        :id="show_item._id"
+        :detail="show_item._detail"
+        :number="show_item.number"
+        :url="getbottomimage()"
+      ></shoppingCart>
+    </div>
   </div>
 </template>
 
 <script>
+import shoppingCart from "@/components/listGoods/shoppingCart.vue";
+
 let vueMethods = {};
+let _ = window._;
 //函数：{ajax获取数据列表函数}
 vueMethods.getList = async function () {
   let { data } = await axios({
@@ -55,17 +71,40 @@ vueMethods.getList = async function () {
   this.listData = list; //用来输出列表的数组
 };
 
+// 下面两个方法在listGoods.vue里有重用
+// #region 显示底部菜单
+vueMethods.showbottom_menu = function (item) {
+  this.showBottomMenu = true;
+  this.show_item = item; //需要加入购物车的商品
+};
+// #endregion
+
+// #region 获取底部菜单商品图片
+vueMethods.getbottomimage = function () {
+  // console.log("getbottomimage的show_item", this.show_item);
+  let url = _.get(
+    this.show_item,
+    `album[0].url`,
+    "https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=3946756184,1966392333&fm=26&gp=0.jpg"
+  );
+  return url;
+};
+// #endregion
+
 import axios from "axios";
 import mall_goods_card from "../components/mall_goods_card.vue";
 export default {
   components: {
     //子组件的注册
     mall_goods_card,
+    shoppingCart,
   },
   data: function () {
     return {
       listData: [], //数据列表
       dataType: "goods",
+      showBottomMenu: false, //底部菜单的显示隐藏
+      show_item: {}, //当前需要加入购物车的item
     };
   },
   methods: vueMethods, //***将vueMethods对象展开到此处
@@ -76,6 +115,16 @@ export default {
 </script>
 
 <style scoped>
+/* #region 首页的加入购物车样式 */
+.mall_goods_bottomMenu {
+  border: 1px black solid;
+  position: fixed;
+  height: 200px;
+  width: 100%;
+  z-index: 100;
+}
+/* #endregion */
+
 .bigg {
   background: #f8f8f8;
   height: 1175px;

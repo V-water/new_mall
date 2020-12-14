@@ -10,6 +10,7 @@ import mall_registered from "./page/mall_registered.vue";
 import listGoods from "./page/listGoods.vue";
 import goodsDetail from "./page/detailCard.vue";
 import shoppingCartPage from "./page/shoppingCartPage.vue";
+import order from "./page/order.vue";
 // #endregion
 
 //创建 router 实例，然后传`router`配置
@@ -22,6 +23,7 @@ const router = new VueRouter({
     { path: '/shoppingCartPage', component: shoppingCartPage, },
     { path: '/mall_login', component: mall_login },
     { path: '/mall_registered', component: mall_registered },
+    { path: '/order', component: order },
   ]
 })
 

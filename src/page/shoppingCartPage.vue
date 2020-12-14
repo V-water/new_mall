@@ -1,38 +1,40 @@
 <template>
   <div>
-    <table class="shoppingCartPage_table" border="1">
-      <tr>
-        <div class="shoppingCart_table_head">
-          <div class="shoppingCart-table-input">
-            <!-- TODO 父复选框 -->
-            <input
-              class="shoppingCart_checkbox"
-              type="checkbox"
-              v-model="isAllSelected"
-              @change="selectAll(isAllSelected)"
-            />
+    <div class="wrap_table">
+      <table class="shoppingCartPage_table">
+        <tr>
+          <div class="shoppingCart_table_head">
+            <div class="shoppingCart-table-input">
+              <!-- TODO 父复选框 -->
+              <input
+                class="shoppingCart_checkbox"
+                type="checkbox"
+                v-model="isAllSelected"
+                @change="selectAll(isAllSelected)"
+              />
+            </div>
+            <div>
+              <span class="iconfont icon-mall"></span>
+              <a href class="shoppingCart_mabang">码帮商城</a>
+              <span
+                class="shoppingCart_table_edit"
+                v-if="edit_text"
+                @click="edit_text=false;complete_text=true;show_delete_button=true"
+              >编辑</span>
+              <span
+                class="shoppingCart_table_edit"
+                v-if="complete_text"
+                @click="edit_text=true;complete_text=false;show_delete_button=false"
+              >完成</span>
+            </div>
           </div>
-          <div>
-            <span class="iconfont icon-mall"></span>
-            <a href class="shoppingCart_mabang">码帮商城</a>
-            <span
-              class="shoppingCart_table_edit"
-              v-if="edit_text"
-              @click="edit_text=false;complete_text=true;show_delete_button=true"
-            >编辑</span>
-            <span
-              class="shoppingCart_table_edit"
-              v-if="complete_text"
-              @click="edit_text=true;complete_text=false;show_delete_button=false"
-            >完成</span>
-          </div>
-        </div>
-      </tr>
-      <tbody id>
-        <!-- TODO 引用子复选框 -->
-        <tr is="goods_card" v-for="item in storageList" :key="item._id" :item="item"></tr>
-      </tbody>
-    </table>
+        </tr>
+        <tbody id>
+          <!-- TODO 引用子复选框 -->
+          <tr is="goods_card" v-for="item in storageList" :key="item._id" :item="item"></tr>
+        </tbody>
+      </table>
+    </div>
     <div class="check">
       <div>
         <input
@@ -48,7 +50,15 @@
         <br />
         <span style="color:gray">运费</span>
       </div>
-      <div class="check_text">结算({{goods_number}})</div>
+      <div>
+        <!-- 当需要判断的时候就使用route.push来实现跳转，可以设置跳转的条件 -->
+        <a
+          class="check_text"
+          @click="swtich_page"
+          href="#/order"
+          :class="{cant_check:goods_number==0}"
+        >结算({{goods_number}})</a>
+      </div>
     </div>
     <!-- 删除栏，当点击编辑的时候就会显示 -->
     <div class="check" style="z-index:150" v-if="show_delete_button">
@@ -71,16 +81,18 @@ let shoppingCartPageMethods = {};
 // import axios from "axios";
 import goods_card from "../components/shoppingCartPage/goods_card.vue";
 import NP from "number-precision";
+import util from "@/util/util.js";
+
+// #region
+shoppingCartPageMethods.swtich_page=function(){
+
+}
+// #endregion
+
 // #region 获取localStorage里的商品信息
 shoppingCartPageMethods.getStroageList = function () {
-  let shopping_CartData = localStorage.shoppingCartData;
-  if (shopping_CartData == []) {
-    //判断localStorage里面是否存在数据
-    console.log("localStorage里面不存在数据");
-    // this.storageList = JSON.parse(localStorage.shoppingCartData);
-  } else {
-    this.storageList = JSON.parse(localStorage.shoppingCartData);
-  }
+  this.storageList = util.getLocalStorageObj("shoppingCartData");
+  console.log("storageList", this.storageList);
 };
 // #endregion
 
@@ -102,7 +114,7 @@ shoppingCartPageMethods.delete_selected_goods = function () {
       this.storageList.splice(index, 1); //删除所选商品
     }
   });
-  localStorage.shoppingCartData = JSON.stringify(this.storageList);//存储到localStorage里
+  localStorage.shoppingCartData = JSON.stringify(this.storageList); //存储到localStorage里
 };
 // #endregion
 
@@ -121,15 +133,24 @@ export default {
     };
   },
   computed: {
+    //参与结算的商品列表
+    // goodsListNeed: function () {
+    //   let arrNeed = this.storageList.filter((d) => d.isSelected == true);
+    //   return arrNeed;
+    // },
     //当需要用到计算的时候，就使用computed计算属性
     // #region 总价计算
     priceAll: function () {
       let arrNeed = this.storageList.filter((d) => d.isSelected == true);
+      console.log("shoppingCartPage里被选中的商品", arrNeed);
+      localStorage.arrNeed=JSON.stringify(arrNeed)
+
       let price = 0; //每重新遍历一次数组，都需要将之前的价格情空
       arrNeed.forEach((d) => {
         price += d.price * d.number; //每个商品的价格还要乘以每个商品的数量
       });
-      return NP.strip(price);
+      let npPrice = NP.strip(price);
+      return npPrice;
     },
     // #endregion
 
@@ -137,6 +158,7 @@ export default {
     goods_number: function () {
       //选中的商品的数量
       let arrNeed = this.storageList.filter((d) => d.isSelected == true);
+
       let number = 0; //每重新遍历一次数组，都需要将之前的数量情空
       arrNeed.forEach((d) => {
         number += d.number;
@@ -169,4 +191,7 @@ export default {
 </script>
 
 <style>
+.cant_check {
+  cursor: not-allowed;
+}
 </style>

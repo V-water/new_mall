@@ -13,14 +13,13 @@
 }
 /* #endregion */
 
-/*#region listGoods页面样式  */
+/* #region listGoods页面样式  */
 .listGoods_background {
   height: 100vw;
   background-color: rgb(248, 248, 248);
 }
 
 .allGoods_menu {
-  /* border: 1px black solid; */
   z-index: 1;
   margin-left: auto;
   margin-right: auto;
@@ -34,7 +33,6 @@
 /* #region listGoods页面的左侧菜单样式 */
 .allGoods_menu_aside {
   width: 25%;
-  /* border: 1px black solid; */
 }
 .van-sidebar {
   width: 100%;
@@ -63,7 +61,6 @@
 /* #region listGoods页面的右侧样式--listpage */
 .listpage {
   padding: 2%;
-  /* border: 1px red solid; */
   width: 75%;
 }
 
@@ -81,7 +78,6 @@
   max-height: 120px;
   min-height: 65px;
   height: 20vw;
-  /* border: 1px red solid; */
   width: 10;
   position: relative;
   
@@ -89,7 +85,6 @@
 
 .goods_card_aside
  {
-  /* border: 1px black solid; */
   /* width: 145px; */
   width: 35%;
   height: 100%;
@@ -103,7 +98,6 @@ overflow: hidden;
 
 .goods_card_artical {
   width: 292px;
-  /* border: 1px black solid; */
 }
 
 .goods_card_article_title {
@@ -121,7 +115,6 @@ overflow: hidden;
 }
 
 .goods_card_article_priceSell {
-  /* border: 1px black solid; */
   width: 150px;
   color: red;
   padding: 0 0 0 10px;
@@ -130,7 +123,6 @@ overflow: hidden;
 }
 
 .goods_card_article_priceSell_price {
-  /* border: 1px black solid; */
   display: inline-block;
   width: 110px;
   height: 100%;
@@ -139,13 +131,12 @@ overflow: hidden;
 .icon-tianjia {
   font-size: 24px;
   height: 100%;
-  /* border: 1px black solid; */
   display: inline-block;
   cursor: pointer;
 }
 /* #endregion */
 
- /* #region 购物车界面样式 */
+/* #region 购物车界面样式 */
  .shoppingCart_checkbox{
 cursor: pointer;
 margin:0 10px;
@@ -153,11 +144,17 @@ margin:0 10px;
 
  .shoppingCartPage_table {
   border-collapse: collapse;
+}
+
+.wrap_table{
+  background-color: rgb(248, 248, 248);
+  width: 100%;
   margin-bottom: 50px;
+  height: 100vw;
+
 }
 
 .shoppingCart_table_head {
-  border: 1px black solid;
   display: flex;
   line-height: 40px;
 }
@@ -181,7 +178,6 @@ margin:0 10px;
 
 .shoppingCartPage_goodsCard {
   display: flex;
-  border: 1px black solid;
   height: 100px;
   width: 500px;
 }
@@ -198,7 +194,6 @@ margin:0 10px;
 }
 
 .shoppingCartPage_goodsCard_information {
-  /* border: 1px red solid; */
   padding: 5px 10px;
   flex: 1;
 }
@@ -234,7 +229,6 @@ margin:0 10px;
 /* #region 购物车界面底部结算台 */
 .check {
   background-color: #fff;
-  border: 1px black solid;
   position: fixed;
   bottom: 0;
   line-height: 50px;
@@ -260,3 +254,268 @@ margin:0 10px;
   right: 90px;
 }
 /* #endregion */
+
+/* #region 提交订单页的样式 */
+.order_head {
+  width: 100%;
+  height: 80px;
+  padding: 20px 0px;
+}
+
+.order_line {
+  height: 2px;
+  position: absolute;
+  width: 100%;
+  background: repeating-linear-gradient(-45deg, #ff6d6d, #ff6d6d 20%, transparent 0, transparent 25%, #3283fa 0, #3283fa 45%, transparent 0, transparent 50%);
+  background-size: 80px;
+}
+
+.order_table{
+  margin-bottom: 150px;
+}
+
+.have_margin{
+  padding-left: 40px;
+  padding-right: 40px;
+}
+
+.deliver_methods{
+  line-height: 50px;
+}
+
+.deliver_methods_text{
+  position: absolute;
+  right: 40px;
+}
+
+.order_mabang{
+  line-height: 60px;
+  /* height: 80px; */
+}
+
+.divider2{
+  width: 100%;
+height: 10px;
+background-color: #ebedf0;
+margin: 5px 0;
+}
+
+.order_wholePrice{
+  margin-top: 30px;
+  font-size: 14px;
+  height: 100px;
+  line-height: 30px;
+}
+
+.order_input{
+display: block;
+width: 100%;
+height: 100px;
+margin-top: 10px;
+border: none;
+}
+
+.order_price{
+  color: red;
+}
+
+.submit_order{
+  border: 1px black solid;
+  position: fixed;
+  bottom: 0;
+  background-color: #fff;
+  width: 100%;
+  height: 55px;
+  display: flex;
+  align-items: center;
+  z-index: 200;
+}
+
+.submit_order_right{
+  display: flex;
+  align-items: center;
+  /* justify-content: center; */
+  position: absolute;
+  right: 10px;
+}
+
+.submit_order_text{
+  display: inline-block;
+  width: 100px;
+  text-align: center;
+  border-radius: 25px;
+  line-height: 40px;
+  background:  -webkit-linear-gradient(left,#ff9000,#ff5000 98%);
+  padding: 5px 10px;
+  margin-left:5px ;
+  color: white;
+}
+
+/* 提交订单商品卡片额外样式 */
+.orderCard{
+  background-color: rgb(248, 248, 248);
+  width: 100%;
+  padding-left: 40px;
+  margin-bottom: 2px;
+}
+/* #endregion */
+
+/* #region shoppingCart.vue样式*/
+/* 加入购物车部分的样式 */
+.shoppingCart-buy {
+  height: 40px;
+}
+
+/* 遮罩部分 */
+.bottom_menu_hidebox {
+  position: fixed;
+  /* display: none; */
+  /* 需要设置left和top */
+  /* left 属性规定元素的左边缘。该属性定义了定位元素左外边距边界与其包含块左边界之间的偏移。 */
+  left: 0;
+  top: 0%;
+  z-index: 99;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(204, 204, 204, 0.6);
+}
+
+.bottom_menu {
+  /* display: none; */
+  z-index: 100;
+  position: fixed;
+  bottom: 0;
+  background-color: #fff;
+  width: 100%;
+}
+
+.bottom_menu_text1 {
+  color: #606266;
+  font-size: 14px;
+  margin: 10px;
+}
+
+.bottom_menu_text2 {
+  color: #606266;
+  font-size: 14px;
+  margin: 20px 10px;
+}
+
+.bottom_goodCard {
+  display: flex;
+}
+
+.bottom_goodCard_img {
+  display: inline-block;
+  width: 98px;
+  height: 80px;
+}
+
+.bottom_goodCard_box {
+  flex: 1;
+}
+
+.bottom_menu_input_number {
+  display: inline-block;
+}
+
+.icon-guanbi {
+  float: right;
+  font-size: 22px;
+  cursor: pointer;
+}
+
+/*  加入购物车 和 立即购买 样式 */
+.van-goods-action {
+  margin-top: 10px;
+  position: relative;
+  height: 40px;
+}
+.van-goods-action-button {
+  border-radius: 0;
+  margin: 0%;
+}
+
+.divider {
+  width: 100%;
+  height: 1px;
+  background-color: #ebedf0;
+  margin: 5px 0;
+}
+/* #endregion */
+
+/* #region 计数器样式*/
+.inputNumber_box {
+  height: 45px;
+  width: 220px;
+  border-radius: 5px;
+  border: 1px rgb(220, 223, 230) solid;
+  display: flex;
+  position: relative;
+  align-items: center;
+  background-color: rgb(245, 247, 250);
+  cursor: pointer;
+}
+
+.inputNumber_box:hover {
+  border: 1px rgb(64, 158, 255) solid;
+}
+
+.item1_1:hover,
+.item1_2:hover {
+  color: rgb(64, 158, 255);
+}
+
+.inputNumber_item1 {
+  /* border: 1px black solid; */
+  text-align: center;
+  /* height: 100%; */
+  flex: 1;
+  font-size: 25px;
+  position: relative;
+  line-height: 43px;
+  user-select: none;
+  font-size: 20px;
+}
+
+.inputNumber_item2 {
+  /* border: 1px rgb(220,223,230) solid; */
+  border-left: 1px solid rgb(220, 223, 230);
+  border-right: 1px solid rgb(220, 223, 230);
+  background-color: #fff;
+  position: relative;
+  right: 0px;
+  left: 0px;
+  margin-left: auto;
+  margin-right: auto;
+  /* width: 130px;
+height: 43px; */
+  width: 50%;
+  height: 100%;
+}
+
+.inputNumber_input {
+  border: none;
+  text-align: center;
+  display: flex;
+  right: 0px;
+  left: 0px;
+  margin-left: auto;
+  margin-right: auto;
+  /* width: 100px; */
+  /* height: 43px; */
+  width: 90%;
+  height: 91%;
+  font-size: 12px;
+}
+
+.disable {
+  cursor: not-allowed;
+}
+
+.button {
+  clear: both;
+}
+/* #endregion */
+
+
