@@ -189,7 +189,7 @@ margin:0 10px;
 }
 
 .shoppingCartPage_goodsCard_img {
-  width: 100px;
+  width: 120px;
   height: 100%;
 }
 
@@ -224,6 +224,23 @@ margin:0 10px;
   right: 20px;
   cursor: pointer;
 }
+
+.go_to_shopping{
+  position: fixed;
+  left: 50%;
+  top: 30%;
+}
+
+.go_to_shopping_button{
+  display: inline-block;
+  border: 1px orange solid;
+  padding: 10px;
+  color: orange;
+  direction: none;
+  margin-top: 30px;
+  margin-left: 20%;
+}
+
 /* #endregion */
 
 /* #region 购物车界面底部结算台 */
@@ -244,6 +261,11 @@ margin:0 10px;
   right: 0;
   padding: 0 10px;
   cursor: pointer;
+}
+
+.cant_check {
+  cursor: not-allowed;
+  background-color: rgb(250,162,162); 
 }
 
 .cost {
@@ -286,6 +308,7 @@ margin:0 10px;
 .deliver_methods_text{
   position: absolute;
   right: 40px;
+  cursor: pointer;
 }
 
 .order_mabang{
@@ -349,6 +372,10 @@ border: none;
   padding: 5px 10px;
   margin-left:5px ;
   color: white;
+}
+
+.order_address{
+  padding-left: 20px;
 }
 
 /* 提交订单商品卡片额外样式 */
@@ -518,4 +545,57 @@ height: 43px; */
 }
 /* #endregion */
 
+/* #region 填写用户信息界面 */
+.customer_box{
+  width: 90%;
+  margin: 20px auto;
+}
+
+.van-field__control{
+  border: 1px rgb(220, 223, 230) solid;
+  color: rgb(100, 101, 102);
+  border-radius: 5px;
+  padding: 5px 10px;
+}
+
+.van-field__label {
+  text-align: right;
+  padding-top: 5px;
+  width: 60px;
+}
+
+.van-cell--required::before {
+  padding-top: 5px;
+}
+
+.van-cell::after{
+  border-bottom: none;
+}
+
+/* .text1 .van-cell--required::before {
+  left: 35px;
+} */
+
+.customer_buttton_box{
+  border: 1px rgb(220, 223, 230) solid;
+  margin: 20px auto;
+  width: 90%;
+  height: 40px;
+}
+
+.customer_save_button,.customer_delete_button{
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+.customer_save_button{
+  color: white;
+  background-color: red;
+}
+
+.customer_delete_button{
+  background-color: #fff;
+}
+/* #endregion */
 

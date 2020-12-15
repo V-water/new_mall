@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <div class="wrap_table">
+  <div class="shoppingCartPage_box">
+    <div class="wrap_table" v-if="show_wrap_table">
       <table class="shoppingCartPage_table">
         <tr>
           <div class="shoppingCart_table_head">
@@ -55,7 +55,6 @@
         <a
           class="check_text"
           @click="swtich_page"
-          href="#/order"
           :class="{cant_check:goods_number==0}"
         >结算({{goods_number}})</a>
       </div>
@@ -73,6 +72,12 @@
       <div>全选</div>
       <div class="check_text" @click="delete_selected_goods()">删除</div>
     </div>
+    <div v-if="go_to_shopping" class="go_to_shopping">
+      <div>购物车快饿瘪了</div>
+      <div>
+        <a href="#/mall_main" class="go_to_shopping_button">去逛逛</a>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -84,23 +89,30 @@ import NP from "number-precision";
 import util from "@/util/util.js";
 
 // #region
-shoppingCartPageMethods.swtich_page=function(){
-
-}
+shoppingCartPageMethods.swtich_page = function () {
+  //结算的时候实现的跳转
+  if (this.goods_number == 0) {
+    console.log("没有商品，无法结算");
+  } else {
+    this.$router.push({ path: "/order" });
+  }
+};
 // #endregion
 
 // #region 获取localStorage里的商品信息
 shoppingCartPageMethods.getStroageList = function () {
   this.storageList = util.getLocalStorageObj("shoppingCartData");
-  console.log("storageList", this.storageList);
+  console.log("获取localStorage里的商品信息storageList", this.storageList);
+  if (this.storageList.length == 0) {
+    (this.show_wrap_table = false), (this.go_to_shopping = true);
+  } else {
+    (this.show_wrap_table = true), (this.go_to_shopping = false);
+  }
 };
 // #endregion
 
 // #region 复选框的全选
 shoppingCartPageMethods.selectAll = function () {
-  // WARN 复选框每次选中的时候，v-model就会等于true，当未选中的时候，v-model就会等于false。因此不需要额外取反
-  // this.isAllSelected = !this.isAllSelected;
-
   this.storageList.forEach((item) => {
     this.$set(item, "isSelected", this.isAllSelected);
   });
@@ -109,12 +121,14 @@ shoppingCartPageMethods.selectAll = function () {
 
 // #region 删除所选商品
 shoppingCartPageMethods.delete_selected_goods = function () {
-  this.storageList.filter((d, index) => {
+  this.storageList.forEach((d, index) => {
     if (d.isSelected == true) {
       this.storageList.splice(index, 1); //删除所选商品
     }
   });
-  localStorage.shoppingCartData = JSON.stringify(this.storageList); //存储到localStorage里
+  if (this.storageList) {
+    util.setLocalStorageObj("shoppingCartData", this.storageList);
+  } //存储到localStorage里
 };
 // #endregion
 
@@ -124,32 +138,29 @@ export default {
   },
   data: function () {
     return {
+      show_wrap_table: true,
       id: null,
       storageList: null,
       isAllSelected: false,
       edit_text: true,
       complete_text: false,
       show_delete_button: false,
+      go_to_shopping: true,
     };
   },
   computed: {
-    //参与结算的商品列表
-    // goodsListNeed: function () {
-    //   let arrNeed = this.storageList.filter((d) => d.isSelected == true);
-    //   return arrNeed;
-    // },
     //当需要用到计算的时候，就使用computed计算属性
     // #region 总价计算
     priceAll: function () {
       let arrNeed = this.storageList.filter((d) => d.isSelected == true);
-      console.log("shoppingCartPage里被选中的商品", arrNeed);
-      localStorage.arrNeed=JSON.stringify(arrNeed)
+      util.setLocalStorageObj("arrNeed", arrNeed);
 
       let price = 0; //每重新遍历一次数组，都需要将之前的价格情空
       arrNeed.forEach((d) => {
         price += d.price * d.number; //每个商品的价格还要乘以每个商品的数量
       });
       let npPrice = NP.strip(price);
+      util.setLocalStorageObj("price", npPrice);
       return npPrice;
     },
     // #endregion
@@ -191,7 +202,4 @@ export default {
 </script>
 
 <style>
-.cant_check {
-  cursor: not-allowed;
-}
 </style>

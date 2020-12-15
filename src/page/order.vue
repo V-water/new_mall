@@ -4,7 +4,9 @@
       <div class="order_head have_margin">
         <div class="order_user">
           <span class="iconfont icon-dizhi_huaban"></span> 收货人：
-          <span class="deliver_methods_text">></span>
+          <span class="deliver_methods_text choose_address">
+            <a href="#/customer">></a>
+          </span>
         </div>
         <div class="order_address">收货地址：</div>
       </div>
@@ -40,7 +42,10 @@
       </div>
       <div class="submit_order">
         <div class="submit_order_right">
-          <span>合计: <span class="order_price">￥{{all_cost}}</span> </span>
+          <span>
+            合计:
+            <span class="order_price">￥{{all_cost}}</span>
+          </span>
           <span class="submit_order_text">提交订单</span>
         </div>
       </div>
@@ -74,7 +79,11 @@ export default {
   },
   computed: {
     wholePrice: function () {
-      let price = JSON.parse(localStorage.price);
+      // TODO 结算--结算商品的价格
+      // WARN 使用localStorage里的时候，要注意判断里面的数值时存在的，不是undefined或者是null，使用前需要判断
+      //可以使用try，catch来捕捉错误。
+      // 并不需要进行parse转换。不需要使用将localStorage里的内容转换为
+      let price = localStorage.price;
       let strPrice = price * 1;
       console.log("price", price);
       console.log("strPrice", strPrice);

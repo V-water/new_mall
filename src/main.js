@@ -7,11 +7,12 @@ import mall_main from "./page/mall_main.vue";
 import mall_login from "./page/mall_login.vue";
 import mall_registered from "./page/mall_registered.vue";
 import mall_user from "./page/mall_user.vue";
-// #region listGoods
+// #region cbw
 import listGoods from "./page/listGoods.vue";
 import goodsDetail from "./page/detailCard.vue";
 import shoppingCartPage from "./page/shoppingCartPage.vue";
 import order from "./page/order.vue";
+import customer from "./page/customer.vue";
 // #endregion
 
 //创建 router 实例，然后传`router`配置
@@ -26,6 +27,7 @@ const router = new VueRouter({
     { path: '/mall_registered', component: mall_registered },
     { path: '/order', component: order },
     { path: '/mall_user', component: mall_user },
+    { path: '/customer', component: customer },
   ]
 })
 

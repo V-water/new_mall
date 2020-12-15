@@ -25,7 +25,8 @@
         <span class="bottom_menu_text2">购买数量:</span>
         <span class="bottom_menu_input_number">
           <!-- 引用计数器 -->
-          <inputNumber v-model="number_data" width="100" height="30" minimum="1"></inputNumber>
+          <div>{{number_data}}</div>
+          <inputNumber v-model.number="number_data" width="100" height="30" minimum="1"></inputNumber>
           <!-- <inputNumber countstart="1" addcount="1" bottom_number="1" width="100" height="30"></inputNumber> -->
         </span>
       </div>
@@ -43,6 +44,7 @@
 
 <script>
 import inputNumber from "./inputNumber.vue";
+import util from "@/util/util.js";
 let shoppingCartMethods = {};
 // // #region 获取计数器组件的值
 // // 数量减少，数量增多，数量不变
@@ -54,8 +56,9 @@ let shoppingCartMethods = {};
 // #region 将商品添加到购物车函数
 shoppingCartMethods.addgodds_to_shoppingCart = function () {
   // 读取localStorage已有的商品信息
-  let storage = JSON.parse(localStorage.shoppingCartData);
-  // console.log("storage", storage);
+  let storage = util.getLocalStorageObj("shoppingCartData");
+  // let storage = JSON.parse(localStorage.shoppingCartData);
+  console.log("将商品添加到购物车storage", storage);
 
   let addNeeded = {
     //需要添加的商品的信息
@@ -75,15 +78,17 @@ shoppingCartMethods.addgodds_to_shoppingCart = function () {
     let index = storage.findIndex((item) => item.id == this.id);
     let sameGoods = storage[index];
     // 更改该商品的属性值
-    let sameGoods_number = sameGoods.number * 1 + this.count * 1;
+    let sameGoods_number = sameGoods.number * 1 + this.number_data * 1;
     sameGoods.number = sameGoods_number;
     storage.splice(index, 1, sameGoods); //直接就会影响数组。不需要赋值
-    console.log("storage", storage);
+    // console.log("storage", storage);
   } else {
     console.log("没有相同的商品");
     //先将localStorage里已有的数据，和需要新加的数据整合起来。push是添加在数组后。unshift是添加在数组前。
     storage.push(addNeeded);
   }
+
+  this.number_data = 1; //让计数器恢复到1
 
   let str = JSON.stringify(storage);
   localStorage.shoppingCartData = str;
@@ -131,7 +136,7 @@ export default {
       default:
         "https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=3946756184,1966392333&fm=26&gp=0.jpg",
     },
-    number:{
+    number: {
       default: 1,
       type: Number, //又支持Number，又支持String类型的，可以用数组括起来
     },
@@ -140,8 +145,8 @@ export default {
   },
   data() {
     return {
-      number_data:this.number,//当前计数器的值
-      num: 1, //计数器的起始值  
+      number_data: 1, //当前计数器的值
+      num: 1, //计数器的起始值
       show_bottomMenu: this.show, //底部弹窗，show是变化的，要监测show的变化并且将相应的值及时赋给show_bottomMenu。使用update
     };
   },
