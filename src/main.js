@@ -6,6 +6,7 @@ Vue.use(VueRouter)
 import mall_main from "./page/mall_main.vue";
 import mall_login from "./page/mall_login.vue";
 import mall_registered from "./page/mall_registered.vue";
+import mall_user from "./page/mall_user.vue";
 // #region listGoods
 import listGoods from "./page/listGoods.vue";
 import goodsDetail from "./page/detailCard.vue";
@@ -24,6 +25,7 @@ const router = new VueRouter({
     { path: '/mall_login', component: mall_login },
     { path: '/mall_registered', component: mall_registered },
     { path: '/order', component: order },
+    { path: '/mall_user', component: mall_user },
   ]
 })
 

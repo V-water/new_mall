@@ -25,7 +25,7 @@
         </router-link>
       </div>
       <div class="menu_1">
-        <router-link to="/mall_login">
+        <router-link to="/mall_user">
           <div
             class="iconfont icon-80gerenzhongxin"
             style="font-size: 20px"

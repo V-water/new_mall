@@ -42,6 +42,7 @@
 
 <script>
 import axios from "axios";
+// import util from "@/util/util.js";
 
 export default {
   data() {
@@ -70,10 +71,20 @@ export default {
       });
 
       let { list } = data;
-      console.log(`list.length`, list.length);
+      console.log(`list`, list);
       if (list.length > 0) {
         // findJson.phone == phone;
         alert("登录成功");
+        localStorage.isLogin = 1;
+        console.log(`this.dataSearchForm:`, this.dataSearchForm);
+        this.$router.push({ path: "/mall_user" }); //编程式的导航：使用对象和path配合
+        let info = {
+          phone: this.dataSearchForm.phone,
+          passWord: this.dataSearchForm.passWord,
+        };
+        let strInfo = JSON.stringify(info); //JSON对象转换成JSON字符串
+        console.log(`strInfo:`, strInfo);
+        localStorage.userInfo = strInfo;
       } else {
         alert("请输入正确的手机号或密码");
       }
@@ -88,8 +99,19 @@ export default {
     findJson: function () {
       let { dataSearchForm } = this;
       let findJson = { ...dataSearchForm };
+      console.log(`dataSearchForm.phone`, dataSearchForm.phone);
       return findJson;
     },
+  },
+  created() {
+    // alert(localStorage.isLogin);
+    if (localStorage.isLogin != 1) {
+      // alert("未登录");
+    } else {
+      //判断登录状态，如果已登录，则跳转到会员中心页
+      // alert("已登录");
+      this.$router.push({ path: "/mall_user" }); //跳转到登录页
+    }
   },
 };
 </script>
