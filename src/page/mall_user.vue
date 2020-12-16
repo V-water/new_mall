@@ -11,8 +11,8 @@
         </div>
       </div>
       <div class="box_menu">
-        <div style="margin-top: 5px">全部订单</div>
-        <div style="margin-top: 5px">设置</div>
+        <div>全部订单</div>
+        <div>设置</div>
         <button style="margin-top: 5px" @click="logout">退出登录</button>
       </div>
     </div>
@@ -40,7 +40,7 @@ export default {
       //清空localStorage.isLogin 和localStorage.userInfo
       delete localStorage.isLogin;
       delete localStorage.userInfo;
-    //  await util.timeout(500)
+      //  await util.timeout(500)
       this.$router.push({ path: "/mall_login" }); //跳转到登录页
     },
   },
@@ -84,6 +84,45 @@ export default {
 .box_head h1 {
   font-size: 28px;
   font-weight: 400;
+}
+.box_menu div {
+  margin-top: 5px;
+}
+.box_menu button {
+  margin-top: 5px;
+}
+@media screen and (min-width: 360px) {
+  .login_box {
+    width: 640px;
+    padding: 71.1px 0;
+    margin: 0 auto;
+  }
+  .box_head {
+    display: flex;
+    padding: 17.77px 17.77px 17.77px 8.88px;
+  }
+  .box_userImg {
+    width: 106.66px;
+    height: 106.66px;
+    border-radius: 10%;
+    border: 7.11px solid #ddd;
+    display: inline-block;
+  }
+  .box_head h1 {
+    font-size: 49.77px;
+    font-weight: 400;
+  }
+  .box_head h2 {
+    font-size: 42.66px;
+  }
+  .box_menu div {
+    font-size: 28.44px;
+    margin-top: 8.88px;
+  }
+  .box_menu button {
+    font-size: 28.44px;
+    margin-top: 8.88px;
+  }
 }
 
 .plase {

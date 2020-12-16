@@ -22,13 +22,13 @@
         </van-swipe>
       </div>
       <div class="block">
-        <div style="background: rgb(242, 242, 242)">
-          <mall_goods_card
+        <div class="box_1">
+          <mall_goods_card_2
             v-for="item in listData"
             :item="item"
             :key="item.id"
             @show-bottom-menu="showbottom_menu"
-          ></mall_goods_card>
+          ></mall_goods_card_2>
           <a href="#" class="lookAll">点击查看全部商品</a>
         </div>
       </div>
@@ -92,11 +92,11 @@ vueMethods.getbottomimage = function () {
 // #endregion
 
 import axios from "axios";
-import mall_goods_card from "../components/mall_goods_card.vue";
+import mall_goods_card_2 from "../components/mall_goods_card_2.vue";
 export default {
   components: {
     //子组件的注册
-    mall_goods_card,
+    mall_goods_card_2,
     shoppingCart,
   },
   data: function () {
@@ -162,15 +162,45 @@ export default {
   margin: 0 auto;
   background: #f8f8f8;
 }
+.box_1 {
+  background: rgb(242, 242, 242);
+}
 
-/* @media screen and (max-width: 360px) {
+@media screen and (min-width: 360px) {
+  .bigg {
+    background: #f8f8f8;
+    /* height: 1175px; */
+    width: 640px;
+    margin: 0 auto;
+  }
+  .box_head {
+    height: 160px;
+    line-height: 160px;
+    font-weight: 700;
+    font-size: 71.1px;
+  }
+  .my-swipe .van-swipe-item {
+    height: 250px;
+    line-height: 250px;
+  }
+  .my-swipe img {
+    width: 640px;
+    height: 250px;
+  }
   .block {
     display: flex;
-    width: 360px;
+    width: 640px;
     margin: 0 auto;
     background: #f8f8f8;
   }
-} */
+  .box_1 {
+    background: rgb(242, 242, 242);
+    width: 640px;
+  }
+  .lookAll {
+    width: 640px;
+  }
+}
 
 /* @media screen and (max-width: 640px) {
   .block {

@@ -16,12 +16,9 @@
 <script>
 let _ = window._;
 export default {
- 
   props: ["item"],
   data: function () {
-    return {
-
-    };
+    return {};
   },
   methods: {
     //函数：获取商品图片的函数
@@ -40,7 +37,7 @@ export default {
 
 <style scoped>
 .box_1 {
-  height: 265px;
+  height: 245px;
   width: 165px;
   background: #fff;
   margin: 5px 7px;
@@ -48,13 +45,13 @@ export default {
 }
 .goods_img {
   width: 157.5px;
-  height: 175.5px;
+  height: 135.5px;
   position: relative;
 }
 .box_commodity {
   width: 157.5px;
-  height: 157.5px;
-  background-size: 157.5px 157.5px;
+  height: 135.5px;
+  background-size: 135.5px 157.5px;
   background-repeat: no-repeat;
   margin: 0 4px;
   position: absolute;
@@ -78,7 +75,7 @@ export default {
 .box_car {
   color: #ff5e5c;
   float: left;
-  margin: 20px 0;
+  margin: 20px 0 10px 0;
 }
 .box_car {
   font-size: 25px;

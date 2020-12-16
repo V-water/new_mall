@@ -26,6 +26,13 @@
           placeholder="密码"
           :rules="[{ required: true, message: '请填写密码' }]"
         />
+        <van-field
+          v-model.trim="dataAddForm.confirmPassWord"
+          name="确认密码"
+          label="确认密码"
+          placeholder="确认密码"
+          :rules="[{ required: true, message: '确认密码' }]"
+        />
         <div style="margin: 16px">
           <van-button round block type="info" native-type="submit" @click="addData">
             注册
@@ -80,6 +87,19 @@ export default {
         nickName,
       };
     },
+  },
+  created() {
+    // let passWord = this.dataAddForm.passWord
+    // let confirmPassWord = this.dataAddForm.confirmPassWord
+    // console.log(`passWord:`,passWord)
+    // console.log(`confirmPassWord:`,confirmPassWord)
+    // if (passWord == confirmPassWord) {
+    //   // alert("未登录，跳转登录页");
+    //   // this.$router.push({ path: "/mall_login" }); //跳转到登录页
+    // } else {
+    //   // alert("已登录");
+    //   // this.getLocalStroage();
+    // }
   },
 };
 </script>
