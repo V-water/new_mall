@@ -1,5 +1,13 @@
 <template>
   <div>
+    <van-nav-bar
+      title="会员中心"
+      left-text="返回"
+      right-text="按钮"
+      left-arrow
+      @click-left="onClickLeft"
+      @click-right="onClickRight"
+    />
     <div class="login_box">
       <div class="box_head">
         <div class="box_userImg">
@@ -23,6 +31,7 @@
 <script>
 // import axios from "axios";
 import util from "@/util/util.js";
+import { Toast } from "vant";
 
 export default {
   props: [],
@@ -32,6 +41,12 @@ export default {
     };
   },
   methods: {
+    onClickLeft() {
+      Toast("返回");
+    },
+    onClickRight() {
+      Toast("按钮");
+    },
     getLocalStroage: function () {
       this.user_data = util.getLocalStorageObj("userInfo");
       // console.log(`item.phone:`, item.phone);

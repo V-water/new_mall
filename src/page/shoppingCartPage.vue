@@ -1,5 +1,13 @@
 <template>
   <div class="shoppingCartPage_box">
+    <van-nav-bar
+      title="购物车"
+      left-text="返回"
+      right-text="按钮"
+      left-arrow
+      @click-left="onClickLeft"
+      @click-right="onClickRight"
+    />
     <div class="wrap_table" v-if="show_wrap_table">
       <table class="shoppingCartPage_table">
         <tr>
@@ -87,6 +95,13 @@ let shoppingCartPageMethods = {};
 import goods_card from "../components/shoppingCartPage/goods_card.vue";
 import NP from "number-precision";
 import util from "@/util/util.js";
+import { Toast } from "vant";
+shoppingCartPageMethods.onClickLeft= function() {
+  Toast('返回');
+},
+shoppingCartPageMethods.onClickRight= function() {
+  Toast('按钮');
+},
 
 // #region
 shoppingCartPageMethods.swtich_page = function () {

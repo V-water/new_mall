@@ -1,5 +1,13 @@
 <template>
   <div class="listGoods_background">
+    <van-nav-bar
+      title="所有商品"
+      left-text="返回"
+      right-text="按钮"
+      left-arrow
+      @click-left="onClickLeft"
+      @click-right="onClickRight"
+    />
     <div class="allGoods_menu">
       <aside class="allGoods_menu_aside">
         <van-sidebar v-model="activeKey" @change="onChange">
@@ -42,6 +50,7 @@ import axios from "axios";
 import goodsCard from "@/components/listGoods/goodsCard.vue";
 import shoppingCart from "@/components/listGoods/shoppingCart.vue";
 // import collectshare from "@/components/goodsDetail/collect-share.vue";
+import { Toast } from "vant";
 
 export default {
   name: "listGoods",
@@ -70,6 +79,12 @@ export default {
     },
   },
   methods: {
+    onClickLeft() {
+      Toast("返回");
+    },
+    onClickRight() {
+      Toast("按钮");
+    },
     // #region 左侧菜单的切换tab切换后的回调函数
     onChange(index) {
       // debugger;

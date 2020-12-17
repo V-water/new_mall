@@ -1,7 +1,15 @@
 <template>
   <div>
     <div class="bigg">
-      <div class="box_head">码帮商城</div>
+      <van-nav-bar
+        title="码帮商城"
+        left-text="返回"
+        right-text="按钮"
+        left-arrow
+        @click-left="onClickLeft"
+        @click-right="onClickRight"
+      />
+      <!-- <div class="box_head">码帮商城</div> -->
       <div>
         <van-swipe class="my-swipe" :autoplay="3000" indicator-color="white">
           <van-swipe-item>
@@ -51,9 +59,16 @@
 
 <script>
 import shoppingCart from "@/components/listGoods/shoppingCart.vue";
+import { Toast } from 'vant';
 
 let vueMethods = {};
 let _ = window._;
+vueMethods.onClickLeft= function() {
+  Toast('返回');
+},
+vueMethods.onClickRight= function() {
+  Toast('按钮');
+},
 //函数：{ajax获取数据列表函数}
 vueMethods.getList = async function () {
   let { data } = await axios({

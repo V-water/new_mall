@@ -1,5 +1,13 @@
 <template>
   <div>
+    <van-nav-bar
+      title="会员登录"
+      left-text="返回"
+      right-text="按钮"
+      left-arrow
+      @click-left="onClickLeft"
+      @click-right="onClickRight"
+    />
     <div class="login_box">
       <h1>用户登录</h1>
       <h2>为了你的账号安全，请使用手机号登录</h2>
@@ -42,6 +50,7 @@
 
 <script>
 import axios from "axios";
+import { Toast } from "vant";
 // import util from "@/util/util.js";
 
 export default {
@@ -53,6 +62,12 @@ export default {
     };
   },
   methods: {
+    onClickLeft() {
+      Toast("返回");
+    },
+    onClickRight() {
+      Toast("按钮");
+    },
     onSubmit(values) {
       console.log("submit", values);
     },
